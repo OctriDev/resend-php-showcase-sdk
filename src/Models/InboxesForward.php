@@ -129,7 +129,9 @@ class ForwardInboxThreadEmailOptions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "to") || $data->to === null) { throw new SdkValidationError("to", 'required', "Required property 'to' is missing or null"); }
+        if (!property_exists($data, "to") || $data->to === null) {
+            throw new SdkValidationError("to", 'required', "Required property 'to' is missing or null");
+        }
         return new self(
             to: (is_array($data->to) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkClient::stringValue($data->to)),
             cc: (property_exists($data, "cc") ? ($data->cc === null ? null : (is_array($data->cc) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkClient::stringValue($data->cc))) : SdkNotGiven::Value),
@@ -181,7 +183,9 @@ class ForwardInboxThreadEmailResponseSuccess implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
         return new self(
             id: SdkClient::stringValue($data->id),
         );

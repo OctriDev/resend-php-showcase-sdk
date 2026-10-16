@@ -315,7 +315,8 @@ trait SdkClientMethodsPart3
             return false;
         }
 
-        return match ($scheme) {"bearerAuth" => $auth->bearerAuth !== null,default => false,
+        return match ($scheme) {
+            "bearerAuth" => $auth->bearerAuth !== null,default => false,
         };
     }
 }
