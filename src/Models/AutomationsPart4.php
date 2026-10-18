@@ -21,11 +21,26 @@ final readonly class AutomationStepResponseTypeEnum implements SdkOpenEnum
     public const CONTACT_DELETE = "contact_delete";
     public const ADD_TO_SEGMENT = "add_to_segment";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -108,11 +123,26 @@ final readonly class CreateAutomationRequestStatusEnum implements SdkOpenEnum
     public const ENABLED = "enabled";
     public const DISABLED = "disabled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -185,9 +215,15 @@ class CreateAutomationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "steps") || $data->steps === null) { throw new SdkValidationError("steps", 'required', "Required property 'steps' is missing or null"); }
-        if (!property_exists($data, "connections") || $data->connections === null) { throw new SdkValidationError("connections", 'required', "Required property 'connections' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "steps") || $data->steps === null) {
+            throw new SdkValidationError("steps", 'required', "Required property 'steps' is missing or null");
+        }
+        if (!property_exists($data, "connections") || $data->connections === null) {
+            throw new SdkValidationError("connections", 'required', "Required property 'connections' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             steps: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AutomationStep::class), SdkClient::arrayValue($data->steps))),
