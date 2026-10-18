@@ -116,8 +116,8 @@ class InboxThreadEmailEventData implements \JsonSerializable
             inboxId: SdkClient::stringValue($data->inbox_id),
             threadId: SdkClient::stringValue($data->thread_id),
             emailId: SdkClient::stringValue($data->email_id),
-            thread: (property_exists($data, "thread") ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
-            email: (property_exists($data, "email") ? SdkClient::hydrateClass($data->email, InboxEventEmail::class) : SdkNotGiven::Value),
+            thread: (property_exists($data, "thread") && $data->thread !== null ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
+            email: (property_exists($data, "email") && $data->email !== null ? SdkClient::hydrateClass($data->email, InboxEventEmail::class) : SdkNotGiven::Value),
         );
     }
 }
@@ -374,7 +374,7 @@ class InboxThreadFolderUpdatedEventData implements \JsonSerializable
             source: SdkClient::hydrateStringEnumOrString($data->source, InboxEventSource::class),
             inboxId: SdkClient::stringValue($data->inbox_id),
             threadId: SdkClient::stringValue($data->thread_id),
-            thread: (property_exists($data, "thread") ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
+            thread: (property_exists($data, "thread") && $data->thread !== null ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
         );
     }
 }

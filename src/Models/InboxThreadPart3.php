@@ -195,7 +195,7 @@ class InboxThreadLabelsUpdatedEventData implements \JsonSerializable
             source: SdkClient::hydrateStringEnumOrString($data->source, InboxEventSource::class),
             inboxId: SdkClient::stringValue($data->inbox_id),
             threadId: SdkClient::stringValue($data->thread_id),
-            thread: (property_exists($data, "thread") ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
+            thread: (property_exists($data, "thread") && $data->thread !== null ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
         );
     }
 }
@@ -374,7 +374,7 @@ class InboxThreadUnassignedEventData implements \JsonSerializable
             source: SdkClient::hydrateStringEnumOrString($data->source, InboxEventSource::class),
             inboxId: SdkClient::stringValue($data->inbox_id),
             threadId: SdkClient::stringValue($data->thread_id),
-            thread: (property_exists($data, "thread") ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
+            thread: (property_exists($data, "thread") && $data->thread !== null ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
         );
     }
 }

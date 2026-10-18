@@ -60,8 +60,8 @@ class PublishTemplateResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
         );
     }
 }
@@ -131,9 +131,9 @@ class RemoveTemplateResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            deleted: (property_exists($data, "deleted") ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            deleted: (property_exists($data, "deleted") && $data->deleted !== null ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
         );
     }
 }

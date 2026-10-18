@@ -72,9 +72,9 @@ class ListBroadcastRecipientsResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListBroadcastRecipientsResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListBroadcastRecipientsResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -216,15 +216,15 @@ class ListBroadcastsResponseSuccessDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            audienceId: (property_exists($data, "audience_id") ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
-            segmentId: (property_exists($data, "segment_id") ? SdkClient::stringValue($data->segment_id) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::stringValue($data->status) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            scheduledAt: (property_exists($data, "scheduled_at") ? SdkClient::stringValue($data->scheduled_at) : SdkNotGiven::Value),
-            sentAt: (property_exists($data, "sent_at") ? SdkClient::stringValue($data->sent_at) : SdkNotGiven::Value),
-            topicId: (property_exists($data, "topic_id") ? SdkClient::stringValue($data->topic_id) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            audienceId: (property_exists($data, "audience_id") && $data->audience_id !== null ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
+            segmentId: (property_exists($data, "segment_id") && $data->segment_id !== null ? SdkClient::stringValue($data->segment_id) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::stringValue($data->status) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            scheduledAt: (property_exists($data, "scheduled_at") && $data->scheduled_at !== null ? SdkClient::stringValue($data->scheduled_at) : SdkNotGiven::Value),
+            sentAt: (property_exists($data, "sent_at") && $data->sent_at !== null ? SdkClient::stringValue($data->sent_at) : SdkNotGiven::Value),
+            topicId: (property_exists($data, "topic_id") && $data->topic_id !== null ? SdkClient::stringValue($data->topic_id) : SdkNotGiven::Value),
         );
     }
 }
@@ -294,9 +294,9 @@ class ListBroadcastsResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListBroadcastsResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListBroadcastsResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }

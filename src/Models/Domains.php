@@ -142,11 +142,11 @@ class CreateDomainClaimRequest implements \JsonSerializable
         }
         return new self(
             name: SdkClient::stringValue($data->name),
-            region: (property_exists($data, "region") ? SdkClient::hydrateStringEnumOrString($data->region, CreateDomainClaimRequestRegionEnum::class) : SdkNotGiven::Value),
-            customReturnPath: (property_exists($data, "custom_return_path") ? SdkClient::stringValue($data->custom_return_path) : SdkNotGiven::Value),
-            openTracking: (property_exists($data, "open_tracking") ? SdkClient::boolValue($data->open_tracking) : SdkNotGiven::Value),
-            clickTracking: (property_exists($data, "click_tracking") ? SdkClient::boolValue($data->click_tracking) : SdkNotGiven::Value),
-            trackingSubdomain: (property_exists($data, "tracking_subdomain") ? SdkClient::stringValue($data->tracking_subdomain) : SdkNotGiven::Value),
+            region: (property_exists($data, "region") && $data->region !== null ? SdkClient::hydrateStringEnumOrString($data->region, CreateDomainClaimRequestRegionEnum::class) : SdkNotGiven::Value),
+            customReturnPath: (property_exists($data, "custom_return_path") && $data->custom_return_path !== null ? SdkClient::stringValue($data->custom_return_path) : SdkNotGiven::Value),
+            openTracking: (property_exists($data, "open_tracking") && $data->open_tracking !== null ? SdkClient::boolValue($data->open_tracking) : SdkNotGiven::Value),
+            clickTracking: (property_exists($data, "click_tracking") && $data->click_tracking !== null ? SdkClient::boolValue($data->click_tracking) : SdkNotGiven::Value),
+            trackingSubdomain: (property_exists($data, "tracking_subdomain") && $data->tracking_subdomain !== null ? SdkClient::stringValue($data->tracking_subdomain) : SdkNotGiven::Value),
         );
     }
 }
@@ -340,13 +340,13 @@ class CreateDomainRequest implements \JsonSerializable
         }
         return new self(
             name: SdkClient::stringValue($data->name),
-            region: (property_exists($data, "region") ? SdkClient::hydrateStringEnumOrString($data->region, CreateDomainRequestRegionEnum::class) : SdkNotGiven::Value),
-            customReturnPath: (property_exists($data, "custom_return_path") ? SdkClient::stringValue($data->custom_return_path) : SdkNotGiven::Value),
-            openTracking: (property_exists($data, "open_tracking") ? SdkClient::boolValue($data->open_tracking) : SdkNotGiven::Value),
-            clickTracking: (property_exists($data, "click_tracking") ? SdkClient::boolValue($data->click_tracking) : SdkNotGiven::Value),
-            tls: (property_exists($data, "tls") ? SdkClient::hydrateStringEnumOrString($data->tls, CreateDomainRequestTlsEnum::class) : SdkNotGiven::Value),
-            capabilities: (property_exists($data, "capabilities") ? SdkClient::hydrateClass($data->capabilities, DomainCapabilities::class) : SdkNotGiven::Value),
-            trackingSubdomain: (property_exists($data, "tracking_subdomain") ? SdkClient::stringValue($data->tracking_subdomain) : SdkNotGiven::Value),
+            region: (property_exists($data, "region") && $data->region !== null ? SdkClient::hydrateStringEnumOrString($data->region, CreateDomainRequestRegionEnum::class) : SdkNotGiven::Value),
+            customReturnPath: (property_exists($data, "custom_return_path") && $data->custom_return_path !== null ? SdkClient::stringValue($data->custom_return_path) : SdkNotGiven::Value),
+            openTracking: (property_exists($data, "open_tracking") && $data->open_tracking !== null ? SdkClient::boolValue($data->open_tracking) : SdkNotGiven::Value),
+            clickTracking: (property_exists($data, "click_tracking") && $data->click_tracking !== null ? SdkClient::boolValue($data->click_tracking) : SdkNotGiven::Value),
+            tls: (property_exists($data, "tls") && $data->tls !== null ? SdkClient::hydrateStringEnumOrString($data->tls, CreateDomainRequestTlsEnum::class) : SdkNotGiven::Value),
+            capabilities: (property_exists($data, "capabilities") && $data->capabilities !== null ? SdkClient::hydrateClass($data->capabilities, DomainCapabilities::class) : SdkNotGiven::Value),
+            trackingSubdomain: (property_exists($data, "tracking_subdomain") && $data->tracking_subdomain !== null ? SdkClient::stringValue($data->tracking_subdomain) : SdkNotGiven::Value),
         );
     }
 }

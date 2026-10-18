@@ -98,10 +98,10 @@ class CreateContactImportOptions implements \JsonSerializable
         }
         return new self(
             file: SdkClient::stringValue($data->file),
-            columnMap: (property_exists($data, "column_map") ? SdkClient::stringValue($data->column_map) : SdkNotGiven::Value),
-            onConflict: (property_exists($data, "on_conflict") ? SdkClient::hydrateStringEnumOrString($data->on_conflict, CreateContactImportOptionsOnConflictEnum::class) : SdkNotGiven::Value),
-            segments: (property_exists($data, "segments") ? SdkClient::stringValue($data->segments) : SdkNotGiven::Value),
-            topics: (property_exists($data, "topics") ? SdkClient::stringValue($data->topics) : SdkNotGiven::Value),
+            columnMap: (property_exists($data, "column_map") && $data->column_map !== null ? SdkClient::stringValue($data->column_map) : SdkNotGiven::Value),
+            onConflict: (property_exists($data, "on_conflict") && $data->on_conflict !== null ? SdkClient::hydrateStringEnumOrString($data->on_conflict, CreateContactImportOptionsOnConflictEnum::class) : SdkNotGiven::Value),
+            segments: (property_exists($data, "segments") && $data->segments !== null ? SdkClient::stringValue($data->segments) : SdkNotGiven::Value),
+            topics: (property_exists($data, "topics") && $data->topics !== null ? SdkClient::stringValue($data->topics) : SdkNotGiven::Value),
         );
     }
 }
@@ -159,8 +159,8 @@ class CreateContactImportResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }
@@ -206,7 +206,7 @@ class CreateContactOptionsSegmentsItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }
@@ -294,8 +294,8 @@ class CreateContactOptionsTopicsItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            subscription: (property_exists($data, "subscription") ? SdkClient::hydrateStringEnumOrString($data->subscription, CreateContactOptionsTopicsItemSubscriptionEnum::class) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            subscription: (property_exists($data, "subscription") && $data->subscription !== null ? SdkClient::hydrateStringEnumOrString($data->subscription, CreateContactOptionsTopicsItemSubscriptionEnum::class) : SdkNotGiven::Value),
         );
     }
 }

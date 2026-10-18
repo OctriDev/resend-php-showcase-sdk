@@ -108,9 +108,9 @@ class AutomationStepResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            key: (property_exists($data, "key") ? SdkClient::stringValue($data->key) : SdkNotGiven::Value),
-            type: (property_exists($data, "type") ? SdkClient::hydrateStringEnumOrString($data->type, AutomationStepResponseTypeEnum::class) : SdkNotGiven::Value),
-            config: (property_exists($data, "config") ? SdkClient::stringMapValue($data->config) : SdkNotGiven::Value),
+            key: (property_exists($data, "key") && $data->key !== null ? SdkClient::stringValue($data->key) : SdkNotGiven::Value),
+            type: (property_exists($data, "type") && $data->type !== null ? SdkClient::hydrateStringEnumOrString($data->type, AutomationStepResponseTypeEnum::class) : SdkNotGiven::Value),
+            config: (property_exists($data, "config") && $data->config !== null ? SdkClient::stringMapValue($data->config) : SdkNotGiven::Value),
         );
     }
 }
@@ -228,7 +228,7 @@ class CreateAutomationRequest implements \JsonSerializable
             name: SdkClient::stringValue($data->name),
             steps: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AutomationStep::class), SdkClient::arrayValue($data->steps))),
             connections: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AutomationConnection::class), SdkClient::arrayValue($data->connections))),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, CreateAutomationRequestStatusEnum::class) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, CreateAutomationRequestStatusEnum::class) : SdkNotGiven::Value),
         );
     }
 }
@@ -286,8 +286,8 @@ class CreateAutomationResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }
@@ -357,9 +357,9 @@ class DeleteAutomationResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            deleted: (property_exists($data, "deleted") ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            deleted: (property_exists($data, "deleted") && $data->deleted !== null ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
         );
     }
 }

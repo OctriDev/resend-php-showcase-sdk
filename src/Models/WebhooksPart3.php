@@ -84,10 +84,10 @@ class ListWebhookEventsResponseDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            type: (property_exists($data, "type") ? SdkClient::stringValue($data->type) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, ListWebhookEventsResponseDataItemStatusEnum::class) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            type: (property_exists($data, "type") && $data->type !== null ? SdkClient::stringValue($data->type) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, ListWebhookEventsResponseDataItemStatusEnum::class) : SdkNotGiven::Value),
         );
     }
 }
@@ -157,9 +157,9 @@ class ListWebhookEventsResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListWebhookEventsResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListWebhookEventsResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -253,11 +253,11 @@ class ListWebhooksResponseDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            endpoint: (property_exists($data, "endpoint") ? SdkClient::stringValue($data->endpoint) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            endpoint: (property_exists($data, "endpoint") && $data->endpoint !== null ? SdkClient::stringValue($data->endpoint) : SdkNotGiven::Value),
             events: (property_exists($data, "events") ? ($data->events === null ? null : array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->events)))) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::stringValue($data->status) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::stringValue($data->status) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -327,9 +327,9 @@ class ListWebhooksResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListWebhooksResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListWebhooksResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }

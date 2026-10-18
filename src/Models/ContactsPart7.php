@@ -137,8 +137,8 @@ class UpdateContactTopicsResponseSuccessTopicsItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            subscription: (property_exists($data, "subscription") ? SdkClient::hydrateStringEnumOrString($data->subscription, UpdateContactTopicsResponseSuccessTopicsItemSubscriptionEnum::class) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            subscription: (property_exists($data, "subscription") && $data->subscription !== null ? SdkClient::hydrateStringEnumOrString($data->subscription, UpdateContactTopicsResponseSuccessTopicsItemSubscriptionEnum::class) : SdkNotGiven::Value),
         );
     }
 }
@@ -208,9 +208,9 @@ class UpdateContactTopicsResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            contactId: (property_exists($data, "contact_id") ? SdkClient::stringValue($data->contact_id) : SdkNotGiven::Value),
-            topics: (property_exists($data, "topics") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, UpdateContactTopicsResponseSuccessTopicsItem::class), SdkClient::arrayValue($data->topics))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            contactId: (property_exists($data, "contact_id") && $data->contact_id !== null ? SdkClient::stringValue($data->contact_id) : SdkNotGiven::Value),
+            topics: (property_exists($data, "topics") && $data->topics !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, UpdateContactTopicsResponseSuccessTopicsItem::class), SdkClient::arrayValue($data->topics))) : SdkNotGiven::Value),
         );
     }
 }

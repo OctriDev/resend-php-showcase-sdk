@@ -96,11 +96,11 @@ class GetUsageResponseSuccessEmailsDaily implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            used: (property_exists($data, "used") ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
+            used: (property_exists($data, "used") && $data->used !== null ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
             limit: (property_exists($data, "limit") ? ($data->limit === null ? null : SdkClient::intValue($data->limit)) : SdkNotGiven::Value),
-            sent: (property_exists($data, "sent") ? SdkClient::intValue($data->sent) : SdkNotGiven::Value),
-            received: (property_exists($data, "received") ? SdkClient::intValue($data->received) : SdkNotGiven::Value),
-            resetsAt: (property_exists($data, "resets_at") ? SdkClient::stringValue($data->resets_at) : SdkNotGiven::Value),
+            sent: (property_exists($data, "sent") && $data->sent !== null ? SdkClient::intValue($data->sent) : SdkNotGiven::Value),
+            received: (property_exists($data, "received") && $data->received !== null ? SdkClient::intValue($data->received) : SdkNotGiven::Value),
+            resetsAt: (property_exists($data, "resets_at") && $data->resets_at !== null ? SdkClient::stringValue($data->resets_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -194,11 +194,11 @@ class GetUsageResponseSuccessEmailsMonthly implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            used: (property_exists($data, "used") ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
-            limit: (property_exists($data, "limit") ? SdkClient::intValue($data->limit) : SdkNotGiven::Value),
-            sent: (property_exists($data, "sent") ? SdkClient::intValue($data->sent) : SdkNotGiven::Value),
-            received: (property_exists($data, "received") ? SdkClient::intValue($data->received) : SdkNotGiven::Value),
-            resetsAt: (property_exists($data, "resets_at") ? SdkClient::stringValue($data->resets_at) : SdkNotGiven::Value),
+            used: (property_exists($data, "used") && $data->used !== null ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
+            limit: (property_exists($data, "limit") && $data->limit !== null ? SdkClient::intValue($data->limit) : SdkNotGiven::Value),
+            sent: (property_exists($data, "sent") && $data->sent !== null ? SdkClient::intValue($data->sent) : SdkNotGiven::Value),
+            received: (property_exists($data, "received") && $data->received !== null ? SdkClient::intValue($data->received) : SdkNotGiven::Value),
+            resetsAt: (property_exists($data, "resets_at") && $data->resets_at !== null ? SdkClient::stringValue($data->resets_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -256,8 +256,8 @@ class GetUsageResponseSuccessEmails implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            daily: (property_exists($data, "daily") ? SdkClient::hydrateClass($data->daily, GetUsageResponseSuccessEmailsDaily::class) : SdkNotGiven::Value),
-            monthly: (property_exists($data, "monthly") ? SdkClient::hydrateClass($data->monthly, GetUsageResponseSuccessEmailsMonthly::class) : SdkNotGiven::Value),
+            daily: (property_exists($data, "daily") && $data->daily !== null ? SdkClient::hydrateClass($data->daily, GetUsageResponseSuccessEmailsDaily::class) : SdkNotGiven::Value),
+            monthly: (property_exists($data, "monthly") && $data->monthly !== null ? SdkClient::hydrateClass($data->monthly, GetUsageResponseSuccessEmailsMonthly::class) : SdkNotGiven::Value),
         );
     }
 }
@@ -315,8 +315,8 @@ class GetUsageResponseSuccessContacts implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            used: (property_exists($data, "used") ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
-            limit: (property_exists($data, "limit") ? SdkClient::intValue($data->limit) : SdkNotGiven::Value),
+            used: (property_exists($data, "used") && $data->used !== null ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
+            limit: (property_exists($data, "limit") && $data->limit !== null ? SdkClient::intValue($data->limit) : SdkNotGiven::Value),
         );
     }
 }

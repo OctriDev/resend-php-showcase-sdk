@@ -136,12 +136,12 @@ class CreateTemplateRequest implements \JsonSerializable
         return new self(
             name: SdkClient::stringValue($data->name),
             html: SdkClient::stringValue($data->html),
-            alias: (property_exists($data, "alias") ? SdkClient::stringValue($data->alias) : SdkNotGiven::Value),
-            from: (property_exists($data, "from") ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
-            subject: (property_exists($data, "subject") ? SdkClient::stringValue($data->subject) : SdkNotGiven::Value),
-            replyTo: (property_exists($data, "reply_to") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->reply_to))) : SdkNotGiven::Value),
-            text: (property_exists($data, "text") ? SdkClient::stringValue($data->text) : SdkNotGiven::Value),
-            variables: (property_exists($data, "variables") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, TemplateVariableInput::class), SdkClient::arrayValue($data->variables))) : SdkNotGiven::Value),
+            alias: (property_exists($data, "alias") && $data->alias !== null ? SdkClient::stringValue($data->alias) : SdkNotGiven::Value),
+            from: (property_exists($data, "from") && $data->from !== null ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
+            subject: (property_exists($data, "subject") && $data->subject !== null ? SdkClient::stringValue($data->subject) : SdkNotGiven::Value),
+            replyTo: (property_exists($data, "reply_to") && $data->reply_to !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->reply_to))) : SdkNotGiven::Value),
+            text: (property_exists($data, "text") && $data->text !== null ? SdkClient::stringValue($data->text) : SdkNotGiven::Value),
+            variables: (property_exists($data, "variables") && $data->variables !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, TemplateVariableInput::class), SdkClient::arrayValue($data->variables))) : SdkNotGiven::Value),
         );
     }
 }
@@ -199,8 +199,8 @@ class CreateTemplateResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
         );
     }
 }
@@ -258,8 +258,8 @@ class DuplicateTemplateResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
         );
     }
 }
@@ -329,9 +329,9 @@ class ListTemplatesResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, TemplateListItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, TemplateListItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
         );
     }
 }

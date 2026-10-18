@@ -48,7 +48,7 @@ class CreateBatchEmailsResponseDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }
@@ -94,7 +94,7 @@ class CreateBatchEmailsResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CreateBatchEmailsResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CreateBatchEmailsResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -324,19 +324,19 @@ class Email implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            messageId: (property_exists($data, "message_id") ? SdkClient::stringValue($data->message_id) : SdkNotGiven::Value),
-            to: (property_exists($data, "to") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkNotGiven::Value),
-            from: (property_exists($data, "from") ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            subject: (property_exists($data, "subject") ? SdkClient::stringValue($data->subject) : SdkNotGiven::Value),
-            html: (property_exists($data, "html") ? SdkClient::stringValue($data->html) : SdkNotGiven::Value),
-            text: (property_exists($data, "text") ? SdkClient::stringValue($data->text) : SdkNotGiven::Value),
-            bcc: (property_exists($data, "bcc") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))) : SdkNotGiven::Value),
-            cc: (property_exists($data, "cc") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkNotGiven::Value),
-            replyTo: (property_exists($data, "reply_to") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->reply_to))) : SdkNotGiven::Value),
-            lastEvent: (property_exists($data, "last_event") ? SdkClient::hydrateStringEnumOrString($data->last_event, EmailLastEventEnum::class) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            messageId: (property_exists($data, "message_id") && $data->message_id !== null ? SdkClient::stringValue($data->message_id) : SdkNotGiven::Value),
+            to: (property_exists($data, "to") && $data->to !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkNotGiven::Value),
+            from: (property_exists($data, "from") && $data->from !== null ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            subject: (property_exists($data, "subject") && $data->subject !== null ? SdkClient::stringValue($data->subject) : SdkNotGiven::Value),
+            html: (property_exists($data, "html") && $data->html !== null ? SdkClient::stringValue($data->html) : SdkNotGiven::Value),
+            text: (property_exists($data, "text") && $data->text !== null ? SdkClient::stringValue($data->text) : SdkNotGiven::Value),
+            bcc: (property_exists($data, "bcc") && $data->bcc !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))) : SdkNotGiven::Value),
+            cc: (property_exists($data, "cc") && $data->cc !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkNotGiven::Value),
+            replyTo: (property_exists($data, "reply_to") && $data->reply_to !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->reply_to))) : SdkNotGiven::Value),
+            lastEvent: (property_exists($data, "last_event") && $data->last_event !== null ? SdkClient::hydrateStringEnumOrString($data->last_event, EmailLastEventEnum::class) : SdkNotGiven::Value),
         );
     }
 }

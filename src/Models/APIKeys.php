@@ -84,9 +84,9 @@ class ApiKey implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
             lastUsedAt: (property_exists($data, "last_used_at") ? ($data->last_used_at === null ? null : SdkClient::stringValue($data->last_used_at)) : SdkNotGiven::Value),
         );
     }
@@ -189,8 +189,8 @@ class CreateApiKeyRequest implements \JsonSerializable
         }
         return new self(
             name: SdkClient::stringValue($data->name),
-            permission: (property_exists($data, "permission") ? SdkClient::hydrateStringEnumOrString($data->permission, CreateApiKeyRequestPermissionEnum::class) : SdkNotGiven::Value),
-            domainId: (property_exists($data, "domain_id") ? SdkClient::stringValue($data->domain_id) : SdkNotGiven::Value),
+            permission: (property_exists($data, "permission") && $data->permission !== null ? SdkClient::hydrateStringEnumOrString($data->permission, CreateApiKeyRequestPermissionEnum::class) : SdkNotGiven::Value),
+            domainId: (property_exists($data, "domain_id") && $data->domain_id !== null ? SdkClient::stringValue($data->domain_id) : SdkNotGiven::Value),
         );
     }
 }
@@ -248,8 +248,8 @@ class CreateApiKeyResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            token: (property_exists($data, "token") ? SdkClient::stringValue($data->token) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            token: (property_exists($data, "token") && $data->token !== null ? SdkClient::stringValue($data->token) : SdkNotGiven::Value),
         );
     }
 }
@@ -319,9 +319,9 @@ class DeleteApiKeyResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            deleted: (property_exists($data, "deleted") ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            deleted: (property_exists($data, "deleted") && $data->deleted !== null ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
         );
     }
 }

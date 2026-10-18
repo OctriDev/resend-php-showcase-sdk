@@ -251,7 +251,7 @@ class EmailReceivedEventData implements \JsonSerializable
             bcc: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))),
             cc: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))),
             attachments: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, WebhookEventAttachment::class), SdkClient::arrayValue($data->attachments))),
-            receivedFor: (property_exists($data, "received_for") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->received_for))) : SdkNotGiven::Value),
+            receivedFor: (property_exists($data, "received_for") && $data->received_for !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->received_for))) : SdkNotGiven::Value),
         );
     }
 }

@@ -96,11 +96,11 @@ class ListContactPropertiesResponseSuccessDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            key: (property_exists($data, "key") ? SdkClient::stringValue($data->key) : SdkNotGiven::Value),
-            type: (property_exists($data, "type") ? SdkClient::stringValue($data->type) : SdkNotGiven::Value),
-            fallbackValue: (property_exists($data, "fallback_value") ? (is_float($data->fallback_value) || is_int($data->fallback_value) ? SdkClient::floatValue($data->fallback_value) : SdkClient::stringValue($data->fallback_value)) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            key: (property_exists($data, "key") && $data->key !== null ? SdkClient::stringValue($data->key) : SdkNotGiven::Value),
+            type: (property_exists($data, "type") && $data->type !== null ? SdkClient::stringValue($data->type) : SdkNotGiven::Value),
+            fallbackValue: (property_exists($data, "fallback_value") && $data->fallback_value !== null ? (is_float($data->fallback_value) || is_int($data->fallback_value) ? SdkClient::floatValue($data->fallback_value) : SdkClient::stringValue($data->fallback_value)) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -170,9 +170,9 @@ class ListContactPropertiesResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListContactPropertiesResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListContactPropertiesResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -242,9 +242,9 @@ class RemoveContactPropertyResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            deleted: (property_exists($data, "deleted") ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            deleted: (property_exists($data, "deleted") && $data->deleted !== null ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
         );
     }
 }
@@ -290,7 +290,7 @@ class UpdateContactPropertyOptions implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            fallbackValue: (property_exists($data, "fallback_value") ? (is_float($data->fallback_value) || is_int($data->fallback_value) ? SdkClient::floatValue($data->fallback_value) : SdkClient::stringValue($data->fallback_value)) : SdkNotGiven::Value),
+            fallbackValue: (property_exists($data, "fallback_value") && $data->fallback_value !== null ? (is_float($data->fallback_value) || is_int($data->fallback_value) ? SdkClient::floatValue($data->fallback_value) : SdkClient::stringValue($data->fallback_value)) : SdkNotGiven::Value),
         );
     }
 }
@@ -348,8 +348,8 @@ class UpdateContactPropertyResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
         );
     }
 }

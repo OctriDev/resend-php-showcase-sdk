@@ -72,9 +72,9 @@ class ListEmailsResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Email::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Email::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -133,7 +133,7 @@ class SendEmailRequest implements \JsonSerializable
      */
     public readonly string|SdkNotGiven $text;
     /**
-     * Optional API value serialized in the `template` wire field.
+     * Use a published template to send the email. If provided, do not include html or text.
      *
      * @var EmailTemplateInput|SdkNotGiven
      */
@@ -282,17 +282,17 @@ class SendEmailRequest implements \JsonSerializable
             from: SdkClient::stringValue($data->from),
             to: (is_array($data->to) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkClient::stringValue($data->to)),
             subject: SdkClient::stringValue($data->subject),
-            bcc: (property_exists($data, "bcc") ? (is_array($data->bcc) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))) : SdkClient::stringValue($data->bcc)) : SdkNotGiven::Value),
-            cc: (property_exists($data, "cc") ? (is_array($data->cc) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkClient::stringValue($data->cc)) : SdkNotGiven::Value),
-            replyTo: (property_exists($data, "reply_to") ? (is_array($data->reply_to) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->reply_to))) : SdkClient::stringValue($data->reply_to)) : SdkNotGiven::Value),
-            html: (property_exists($data, "html") ? SdkClient::stringValue($data->html) : SdkNotGiven::Value),
-            text: (property_exists($data, "text") ? SdkClient::stringValue($data->text) : SdkNotGiven::Value),
-            template: (property_exists($data, "template") ? SdkClient::hydrateClass($data->template, EmailTemplateInput::class) : SdkNotGiven::Value),
-            headers: (property_exists($data, "headers") ? SdkClient::stringMapValue($data->headers) : SdkNotGiven::Value),
-            scheduledAt: (property_exists($data, "scheduled_at") ? SdkClient::stringValue($data->scheduled_at) : SdkNotGiven::Value),
-            attachments: (property_exists($data, "attachments") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Attachment::class), SdkClient::arrayValue($data->attachments))) : SdkNotGiven::Value),
-            tags: (property_exists($data, "tags") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Tag::class), SdkClient::arrayValue($data->tags))) : SdkNotGiven::Value),
-            topicId: (property_exists($data, "topic_id") ? SdkClient::stringValue($data->topic_id) : SdkNotGiven::Value),
+            bcc: (property_exists($data, "bcc") && $data->bcc !== null ? (is_array($data->bcc) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))) : SdkClient::stringValue($data->bcc)) : SdkNotGiven::Value),
+            cc: (property_exists($data, "cc") && $data->cc !== null ? (is_array($data->cc) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkClient::stringValue($data->cc)) : SdkNotGiven::Value),
+            replyTo: (property_exists($data, "reply_to") && $data->reply_to !== null ? (is_array($data->reply_to) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->reply_to))) : SdkClient::stringValue($data->reply_to)) : SdkNotGiven::Value),
+            html: (property_exists($data, "html") && $data->html !== null ? SdkClient::stringValue($data->html) : SdkNotGiven::Value),
+            text: (property_exists($data, "text") && $data->text !== null ? SdkClient::stringValue($data->text) : SdkNotGiven::Value),
+            template: (property_exists($data, "template") && $data->template !== null ? SdkClient::hydrateClass($data->template, EmailTemplateInput::class) : SdkNotGiven::Value),
+            headers: (property_exists($data, "headers") && $data->headers !== null ? SdkClient::stringMapValue($data->headers) : SdkNotGiven::Value),
+            scheduledAt: (property_exists($data, "scheduled_at") && $data->scheduled_at !== null ? SdkClient::stringValue($data->scheduled_at) : SdkNotGiven::Value),
+            attachments: (property_exists($data, "attachments") && $data->attachments !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Attachment::class), SdkClient::arrayValue($data->attachments))) : SdkNotGiven::Value),
+            tags: (property_exists($data, "tags") && $data->tags !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Tag::class), SdkClient::arrayValue($data->tags))) : SdkNotGiven::Value),
+            topicId: (property_exists($data, "topic_id") && $data->topic_id !== null ? SdkClient::stringValue($data->topic_id) : SdkNotGiven::Value),
         );
     }
 }
@@ -338,7 +338,7 @@ class SendEmailResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }

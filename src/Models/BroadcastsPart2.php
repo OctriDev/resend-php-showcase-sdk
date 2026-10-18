@@ -60,8 +60,8 @@ class DuplicateBroadcastResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
         );
     }
 }
@@ -275,18 +275,18 @@ class GetBroadcastResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
             audienceId: (property_exists($data, "audience_id") ? ($data->audience_id === null ? null : SdkClient::stringValue($data->audience_id)) : SdkNotGiven::Value),
             segmentId: (property_exists($data, "segment_id") ? ($data->segment_id === null ? null : SdkClient::stringValue($data->segment_id)) : SdkNotGiven::Value),
-            from: (property_exists($data, "from") ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
-            subject: (property_exists($data, "subject") ? SdkClient::stringValue($data->subject) : SdkNotGiven::Value),
-            replyTo: (property_exists($data, "reply_to") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->reply_to))) : SdkNotGiven::Value),
-            previewText: (property_exists($data, "preview_text") ? SdkClient::stringValue($data->preview_text) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::stringValue($data->status) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            scheduledAt: (property_exists($data, "scheduled_at") ? SdkClient::stringValue($data->scheduled_at) : SdkNotGiven::Value),
-            sentAt: (property_exists($data, "sent_at") ? SdkClient::stringValue($data->sent_at) : SdkNotGiven::Value),
+            from: (property_exists($data, "from") && $data->from !== null ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
+            subject: (property_exists($data, "subject") && $data->subject !== null ? SdkClient::stringValue($data->subject) : SdkNotGiven::Value),
+            replyTo: (property_exists($data, "reply_to") && $data->reply_to !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->reply_to))) : SdkNotGiven::Value),
+            previewText: (property_exists($data, "preview_text") && $data->preview_text !== null ? SdkClient::stringValue($data->preview_text) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::stringValue($data->status) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            scheduledAt: (property_exists($data, "scheduled_at") && $data->scheduled_at !== null ? SdkClient::stringValue($data->scheduled_at) : SdkNotGiven::Value),
+            sentAt: (property_exists($data, "sent_at") && $data->sent_at !== null ? SdkClient::stringValue($data->sent_at) : SdkNotGiven::Value),
             text: (property_exists($data, "text") ? ($data->text === null ? null : SdkClient::stringValue($data->text)) : SdkNotGiven::Value),
             html: (property_exists($data, "html") ? ($data->html === null ? null : SdkClient::stringValue($data->html)) : SdkNotGiven::Value),
             topicId: (property_exists($data, "topic_id") ? ($data->topic_id === null ? null : SdkClient::stringValue($data->topic_id)) : SdkNotGiven::Value),

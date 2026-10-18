@@ -168,17 +168,17 @@ class DomainClaim implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, DomainClaimStatusEnum::class) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, DomainClaimStatusEnum::class) : SdkNotGiven::Value),
             domainId: (property_exists($data, "domain_id") ? ($data->domain_id === null ? null : SdkClient::stringValue($data->domain_id)) : SdkNotGiven::Value),
             region: (property_exists($data, "region") ? ($data->region === null ? null : SdkClient::hydrateStringEnumOrString($data->region, DomainClaimRegionEnum::class)) : SdkNotGiven::Value),
-            record: (property_exists($data, "record") ? SdkClient::hydrateClass($data->record, DomainClaimRecord::class) : SdkNotGiven::Value),
+            record: (property_exists($data, "record") && $data->record !== null ? SdkClient::hydrateClass($data->record, DomainClaimRecord::class) : SdkNotGiven::Value),
             blockedReason: (property_exists($data, "blocked_reason") ? ($data->blocked_reason === null ? null : SdkClient::hydrateStringEnumOrString($data->blocked_reason, DomainClaimBlockedReasonEnum::class)) : SdkNotGiven::Value),
             failureReason: (property_exists($data, "failure_reason") ? ($data->failure_reason === null ? null : SdkClient::stringValue($data->failure_reason)) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            expiresAt: (property_exists($data, "expires_at") ? SdkClient::stringValue($data->expires_at) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            expiresAt: (property_exists($data, "expires_at") && $data->expires_at !== null ? SdkClient::stringValue($data->expires_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -289,10 +289,10 @@ class DomainClaimRecord implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            type: (property_exists($data, "type") ? SdkClient::hydrateStringEnumOrString($data->type, DomainClaimRecordTypeEnum::class) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            value: (property_exists($data, "value") ? SdkClient::stringValue($data->value) : SdkNotGiven::Value),
-            ttl: (property_exists($data, "ttl") ? SdkClient::stringValue($data->ttl) : SdkNotGiven::Value),
+            type: (property_exists($data, "type") && $data->type !== null ? SdkClient::hydrateStringEnumOrString($data->type, DomainClaimRecordTypeEnum::class) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            value: (property_exists($data, "value") && $data->value !== null ? SdkClient::stringValue($data->value) : SdkNotGiven::Value),
+            ttl: (property_exists($data, "ttl") && $data->ttl !== null ? SdkClient::stringValue($data->ttl) : SdkNotGiven::Value),
         );
     }
 }

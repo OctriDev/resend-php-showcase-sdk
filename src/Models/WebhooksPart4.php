@@ -60,8 +60,8 @@ class ReplayWebhookEventResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }
@@ -131,9 +131,9 @@ class RotateWebhookSigningSecretResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            signingSecret: (property_exists($data, "signing_secret") ? SdkClient::stringValue($data->signing_secret) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            signingSecret: (property_exists($data, "signing_secret") && $data->signing_secret !== null ? SdkClient::stringValue($data->signing_secret) : SdkNotGiven::Value),
         );
     }
 }
@@ -233,9 +233,9 @@ class UpdateWebhookRequest implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            endpoint: (property_exists($data, "endpoint") ? SdkClient::stringValue($data->endpoint) : SdkNotGiven::Value),
-            events: (property_exists($data, "events") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->events))) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, UpdateWebhookRequestStatusEnum::class) : SdkNotGiven::Value),
+            endpoint: (property_exists($data, "endpoint") && $data->endpoint !== null ? SdkClient::stringValue($data->endpoint) : SdkNotGiven::Value),
+            events: (property_exists($data, "events") && $data->events !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->events))) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, UpdateWebhookRequestStatusEnum::class) : SdkNotGiven::Value),
         );
     }
 }
@@ -293,8 +293,8 @@ class UpdateWebhookResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }

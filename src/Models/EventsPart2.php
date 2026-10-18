@@ -72,9 +72,9 @@ class ListEventsResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, EventSummary::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, EventSummary::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -144,9 +144,9 @@ class RemoveEventResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            deleted: (property_exists($data, "deleted") ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            deleted: (property_exists($data, "deleted") && $data->deleted !== null ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
         );
     }
 }
@@ -230,9 +230,9 @@ class SendEventRequest implements \JsonSerializable
         }
         return new self(
             event: SdkClient::stringValue($data->event),
-            contactId: (property_exists($data, "contact_id") ? SdkClient::stringValue($data->contact_id) : SdkNotGiven::Value),
-            email: (property_exists($data, "email") ? SdkClient::stringValue($data->email) : SdkNotGiven::Value),
-            payload: (property_exists($data, "payload") ? SdkClient::stringMapValue($data->payload) : SdkNotGiven::Value),
+            contactId: (property_exists($data, "contact_id") && $data->contact_id !== null ? SdkClient::stringValue($data->contact_id) : SdkNotGiven::Value),
+            email: (property_exists($data, "email") && $data->email !== null ? SdkClient::stringValue($data->email) : SdkNotGiven::Value),
+            payload: (property_exists($data, "payload") && $data->payload !== null ? SdkClient::stringMapValue($data->payload) : SdkNotGiven::Value),
         );
     }
 }
@@ -290,8 +290,8 @@ class SendEventResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            event: (property_exists($data, "event") ? SdkClient::stringValue($data->event) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            event: (property_exists($data, "event") && $data->event !== null ? SdkClient::stringValue($data->event) : SdkNotGiven::Value),
         );
     }
 }

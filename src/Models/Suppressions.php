@@ -107,8 +107,8 @@ class BatchAddSuppressionsResponseSuccessDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }
@@ -154,7 +154,7 @@ class BatchAddSuppressionsResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, BatchAddSuppressionsResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, BatchAddSuppressionsResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -212,8 +212,8 @@ class BatchRemoveSuppressionsOptions implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            emails: (property_exists($data, "emails") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->emails))) : SdkNotGiven::Value),
-            ids: (property_exists($data, "ids") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->ids))) : SdkNotGiven::Value),
+            emails: (property_exists($data, "emails") && $data->emails !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->emails))) : SdkNotGiven::Value),
+            ids: (property_exists($data, "ids") && $data->ids !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->ids))) : SdkNotGiven::Value),
         );
     }
 }
@@ -283,9 +283,9 @@ class BatchRemoveSuppressionsResponseSuccessDataItem implements \JsonSerializabl
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            deleted: (property_exists($data, "deleted") ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            deleted: (property_exists($data, "deleted") && $data->deleted !== null ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
         );
     }
 }
@@ -331,7 +331,7 @@ class BatchRemoveSuppressionsResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, BatchRemoveSuppressionsResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, BatchRemoveSuppressionsResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }

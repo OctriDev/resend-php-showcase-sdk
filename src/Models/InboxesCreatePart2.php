@@ -86,9 +86,9 @@ class CreateInboxOptions implements \JsonSerializable
         }
         return new self(
             emailAddress: SdkClient::stringValue($data->email_address),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            fromName: (property_exists($data, "from_name") ? SdkClient::stringValue($data->from_name) : SdkNotGiven::Value),
-            forwarding: (property_exists($data, "forwarding") ? SdkClient::boolValue($data->forwarding) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            fromName: (property_exists($data, "from_name") && $data->from_name !== null ? SdkClient::stringValue($data->from_name) : SdkNotGiven::Value),
+            forwarding: (property_exists($data, "forwarding") && $data->forwarding !== null ? SdkClient::boolValue($data->forwarding) : SdkNotGiven::Value),
         );
     }
 }

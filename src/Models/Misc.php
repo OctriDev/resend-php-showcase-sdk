@@ -215,10 +215,10 @@ class OutboundEmailEventData implements \JsonSerializable
             from: SdkClient::stringValue($data->from),
             to: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))),
             subject: SdkClient::stringValue($data->subject),
-            broadcastId: (property_exists($data, "broadcast_id") ? SdkClient::stringValue($data->broadcast_id) : SdkNotGiven::Value),
-            templateId: (property_exists($data, "template_id") ? SdkClient::stringValue($data->template_id) : SdkNotGiven::Value),
-            tags: (property_exists($data, "tags") ? SdkClient::mapValues(SdkClient::stringMapValue($data->tags), static fn($item) => SdkClient::stringValue($item)) : SdkNotGiven::Value),
-            headers: (property_exists($data, "headers") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OutboundEmailEventDataHeadersItem::class), SdkClient::arrayValue($data->headers))) : SdkNotGiven::Value),
+            broadcastId: (property_exists($data, "broadcast_id") && $data->broadcast_id !== null ? SdkClient::stringValue($data->broadcast_id) : SdkNotGiven::Value),
+            templateId: (property_exists($data, "template_id") && $data->template_id !== null ? SdkClient::stringValue($data->template_id) : SdkNotGiven::Value),
+            tags: (property_exists($data, "tags") && $data->tags !== null ? SdkClient::mapValues(SdkClient::stringMapValue($data->tags), static fn($item) => SdkClient::stringValue($item)) : SdkNotGiven::Value),
+            headers: (property_exists($data, "headers") && $data->headers !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OutboundEmailEventDataHeadersItem::class), SdkClient::arrayValue($data->headers))) : SdkNotGiven::Value),
         );
     }
 }

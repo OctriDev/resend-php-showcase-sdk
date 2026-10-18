@@ -96,11 +96,11 @@ class Attachment implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            content: (property_exists($data, "content") ? SdkClient::stringValue($data->content) : SdkNotGiven::Value),
-            filename: (property_exists($data, "filename") ? SdkClient::stringValue($data->filename) : SdkNotGiven::Value),
-            path: (property_exists($data, "path") ? SdkClient::stringValue($data->path) : SdkNotGiven::Value),
-            contentType: (property_exists($data, "content_type") ? SdkClient::stringValue($data->content_type) : SdkNotGiven::Value),
-            contentId: (property_exists($data, "content_id") ? SdkClient::stringValue($data->content_id) : SdkNotGiven::Value),
+            content: (property_exists($data, "content") && $data->content !== null ? SdkClient::stringValue($data->content) : SdkNotGiven::Value),
+            filename: (property_exists($data, "filename") && $data->filename !== null ? SdkClient::stringValue($data->filename) : SdkNotGiven::Value),
+            path: (property_exists($data, "path") && $data->path !== null ? SdkClient::stringValue($data->path) : SdkNotGiven::Value),
+            contentType: (property_exists($data, "content_type") && $data->content_type !== null ? SdkClient::stringValue($data->content_type) : SdkNotGiven::Value),
+            contentId: (property_exists($data, "content_id") && $data->content_id !== null ? SdkClient::stringValue($data->content_id) : SdkNotGiven::Value),
         );
     }
 }
@@ -260,14 +260,14 @@ class ListAttachmentsResponseDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
             filename: (property_exists($data, "filename") ? ($data->filename === null ? null : SdkClient::stringValue($data->filename)) : SdkNotGiven::Value),
-            contentType: (property_exists($data, "content_type") ? SdkClient::stringValue($data->content_type) : SdkNotGiven::Value),
-            contentId: (property_exists($data, "content_id") ? SdkClient::stringValue($data->content_id) : SdkNotGiven::Value),
+            contentType: (property_exists($data, "content_type") && $data->content_type !== null ? SdkClient::stringValue($data->content_type) : SdkNotGiven::Value),
+            contentId: (property_exists($data, "content_id") && $data->content_id !== null ? SdkClient::stringValue($data->content_id) : SdkNotGiven::Value),
             contentDisposition: (property_exists($data, "content_disposition") ? ($data->content_disposition === null ? null : SdkClient::hydrateStringEnumOrString($data->content_disposition, ListAttachmentsResponseDataItemContentDispositionEnum::class)) : SdkNotGiven::Value),
-            downloadUrl: (property_exists($data, "download_url") ? SdkClient::stringValue($data->download_url) : SdkNotGiven::Value),
-            expiresAt: (property_exists($data, "expires_at") ? SdkClient::stringValue($data->expires_at) : SdkNotGiven::Value),
-            size: (property_exists($data, "size") ? SdkClient::intValue($data->size) : SdkNotGiven::Value),
+            downloadUrl: (property_exists($data, "download_url") && $data->download_url !== null ? SdkClient::stringValue($data->download_url) : SdkNotGiven::Value),
+            expiresAt: (property_exists($data, "expires_at") && $data->expires_at !== null ? SdkClient::stringValue($data->expires_at) : SdkNotGiven::Value),
+            size: (property_exists($data, "size") && $data->size !== null ? SdkClient::intValue($data->size) : SdkNotGiven::Value),
         );
     }
 }
@@ -337,9 +337,9 @@ class ListAttachmentsResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListAttachmentsResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListAttachmentsResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }

@@ -74,8 +74,8 @@ class CreateSegmentOptions implements \JsonSerializable
         }
         return new self(
             name: SdkClient::stringValue($data->name),
-            audienceId: (property_exists($data, "audience_id") ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
-            filter: (property_exists($data, "filter") ? SdkClient::stringMapValue($data->filter) : SdkNotGiven::Value),
+            audienceId: (property_exists($data, "audience_id") && $data->audience_id !== null ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
+            filter: (property_exists($data, "filter") && $data->filter !== null ? SdkClient::stringMapValue($data->filter) : SdkNotGiven::Value),
         );
     }
 }
@@ -133,8 +133,8 @@ class CreateSegmentResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
         );
     }
 }
@@ -240,12 +240,12 @@ class GetSegmentResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            audienceId: (property_exists($data, "audience_id") ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
-            filter: (property_exists($data, "filter") ? SdkClient::stringMapValue($data->filter) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            audienceId: (property_exists($data, "audience_id") && $data->audience_id !== null ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
+            filter: (property_exists($data, "filter") && $data->filter !== null ? SdkClient::stringMapValue($data->filter) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -327,10 +327,10 @@ class ListSegmentsResponseSuccessDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            audienceId: (property_exists($data, "audience_id") ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            audienceId: (property_exists($data, "audience_id") && $data->audience_id !== null ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
         );
     }
 }

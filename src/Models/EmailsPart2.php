@@ -114,12 +114,12 @@ class EmailMetricsDataRow implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            period: (property_exists($data, "period") ? SdkClient::stringValue($data->period) : SdkNotGiven::Value),
-            domainId: (property_exists($data, "domain_id") ? SdkClient::stringValue($data->domain_id) : SdkNotGiven::Value),
-            domainName: (property_exists($data, "domain_name") ? SdkClient::stringValue($data->domain_name) : SdkNotGiven::Value),
-            emailId: (property_exists($data, "email_id") ? SdkClient::stringValue($data->email_id) : SdkNotGiven::Value),
-            broadcastId: (property_exists($data, "broadcast_id") ? SdkClient::stringValue($data->broadcast_id) : SdkNotGiven::Value),
-            broadcastName: (property_exists($data, "broadcast_name") ? SdkClient::stringValue($data->broadcast_name) : SdkNotGiven::Value),
+            period: (property_exists($data, "period") && $data->period !== null ? SdkClient::stringValue($data->period) : SdkNotGiven::Value),
+            domainId: (property_exists($data, "domain_id") && $data->domain_id !== null ? SdkClient::stringValue($data->domain_id) : SdkNotGiven::Value),
+            domainName: (property_exists($data, "domain_name") && $data->domain_name !== null ? SdkClient::stringValue($data->domain_name) : SdkNotGiven::Value),
+            emailId: (property_exists($data, "email_id") && $data->email_id !== null ? SdkClient::stringValue($data->email_id) : SdkNotGiven::Value),
+            broadcastId: (property_exists($data, "broadcast_id") && $data->broadcast_id !== null ? SdkClient::stringValue($data->broadcast_id) : SdkNotGiven::Value),
+            broadcastName: (property_exists($data, "broadcast_name") && $data->broadcast_name !== null ? SdkClient::stringValue($data->broadcast_name) : SdkNotGiven::Value),
             additionalProperties: array_diff_key(SdkClient::stringMapValue($data), array_flip(["period", "domain_id", "domain_name", "email_id", "broadcast_id", "broadcast_name"])),
         );
     }
@@ -180,7 +180,7 @@ class EmailTemplateInput implements \JsonSerializable
         }
         return new self(
             id: SdkClient::stringValue($data->id),
-            variables: (property_exists($data, "variables") ? SdkClient::mapValues(SdkClient::stringMapValue($data->variables), static fn($item) => (is_float($item) || is_int($item) ? SdkClient::floatValue($item) : SdkClient::stringValue($item))) : SdkNotGiven::Value),
+            variables: (property_exists($data, "variables") && $data->variables !== null ? SdkClient::mapValues(SdkClient::stringMapValue($data->variables), static fn($item) => (is_float($item) || is_int($item) ? SdkClient::floatValue($item) : SdkClient::stringValue($item))) : SdkNotGiven::Value),
         );
     }
 }
@@ -374,14 +374,14 @@ class GetEmailsMetricsResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            startDate: (property_exists($data, "start_date") ? SdkClient::stringValue($data->start_date) : SdkNotGiven::Value),
-            endDate: (property_exists($data, "end_date") ? SdkClient::stringValue($data->end_date) : SdkNotGiven::Value),
-            metrics: (property_exists($data, "metrics") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->metrics))) : SdkNotGiven::Value),
-            dimensions: (property_exists($data, "dimensions") ? array_values(array_map(static fn($item) => SdkClient::hydrateStringEnumOrString($item, GetEmailsMetricsResponseDimensionsItemEnum::class), SdkClient::arrayValue($data->dimensions))) : SdkNotGiven::Value),
-            granularity: (property_exists($data, "granularity") ? SdkClient::hydrateStringEnumOrString($data->granularity, GetEmailsMetricsResponseGranularityEnum::class) : SdkNotGiven::Value),
-            totals: (property_exists($data, "totals") ? SdkClient::mapValues(SdkClient::stringMapValue($data->totals), static fn($item) => SdkClient::floatValue($item)) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, EmailMetricsDataRow::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            startDate: (property_exists($data, "start_date") && $data->start_date !== null ? SdkClient::stringValue($data->start_date) : SdkNotGiven::Value),
+            endDate: (property_exists($data, "end_date") && $data->end_date !== null ? SdkClient::stringValue($data->end_date) : SdkNotGiven::Value),
+            metrics: (property_exists($data, "metrics") && $data->metrics !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->metrics))) : SdkNotGiven::Value),
+            dimensions: (property_exists($data, "dimensions") && $data->dimensions !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateStringEnumOrString($item, GetEmailsMetricsResponseDimensionsItemEnum::class), SdkClient::arrayValue($data->dimensions))) : SdkNotGiven::Value),
+            granularity: (property_exists($data, "granularity") && $data->granularity !== null ? SdkClient::hydrateStringEnumOrString($data->granularity, GetEmailsMetricsResponseGranularityEnum::class) : SdkNotGiven::Value),
+            totals: (property_exists($data, "totals") && $data->totals !== null ? SdkClient::mapValues(SdkClient::stringMapValue($data->totals), static fn($item) => SdkClient::floatValue($item)) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, EmailMetricsDataRow::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }

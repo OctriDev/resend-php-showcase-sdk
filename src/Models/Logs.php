@@ -72,9 +72,9 @@ class ListLogsResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, LogSummary::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, LogSummary::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -250,12 +250,12 @@ class Log implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            endpoint: (property_exists($data, "endpoint") ? SdkClient::stringValue($data->endpoint) : SdkNotGiven::Value),
-            method: (property_exists($data, "method") ? SdkClient::hydrateStringEnumOrString($data->method, LogMethodEnum::class) : SdkNotGiven::Value),
-            responseStatus: (property_exists($data, "response_status") ? SdkClient::intValue($data->response_status) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            endpoint: (property_exists($data, "endpoint") && $data->endpoint !== null ? SdkClient::stringValue($data->endpoint) : SdkNotGiven::Value),
+            method: (property_exists($data, "method") && $data->method !== null ? SdkClient::hydrateStringEnumOrString($data->method, LogMethodEnum::class) : SdkNotGiven::Value),
+            responseStatus: (property_exists($data, "response_status") && $data->response_status !== null ? SdkClient::intValue($data->response_status) : SdkNotGiven::Value),
             userAgent: (property_exists($data, "user_agent") ? ($data->user_agent === null ? null : SdkClient::stringValue($data->user_agent)) : SdkNotGiven::Value),
             requestBody: (property_exists($data, "request_body") ? ($data->request_body === null ? null : SdkClient::stringMapValue($data->request_body)) : SdkNotGiven::Value),
             responseBody: (property_exists($data, "response_body") ? ($data->response_body === null ? null : SdkClient::stringMapValue($data->response_body)) : SdkNotGiven::Value),

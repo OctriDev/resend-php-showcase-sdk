@@ -72,9 +72,9 @@ class ListDomainsResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListDomainsItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListDomainsItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -198,11 +198,11 @@ class UpdateDomainOptions implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            openTracking: (property_exists($data, "open_tracking") ? SdkClient::boolValue($data->open_tracking) : SdkNotGiven::Value),
-            clickTracking: (property_exists($data, "click_tracking") ? SdkClient::boolValue($data->click_tracking) : SdkNotGiven::Value),
-            tls: (property_exists($data, "tls") ? SdkClient::hydrateStringEnumOrString($data->tls, UpdateDomainOptionsTlsEnum::class) : SdkNotGiven::Value),
-            capabilities: (property_exists($data, "capabilities") ? SdkClient::hydrateClass($data->capabilities, DomainCapabilities::class) : SdkNotGiven::Value),
-            trackingSubdomain: (property_exists($data, "tracking_subdomain") ? SdkClient::stringValue($data->tracking_subdomain) : SdkNotGiven::Value),
+            openTracking: (property_exists($data, "open_tracking") && $data->open_tracking !== null ? SdkClient::boolValue($data->open_tracking) : SdkNotGiven::Value),
+            clickTracking: (property_exists($data, "click_tracking") && $data->click_tracking !== null ? SdkClient::boolValue($data->click_tracking) : SdkNotGiven::Value),
+            tls: (property_exists($data, "tls") && $data->tls !== null ? SdkClient::hydrateStringEnumOrString($data->tls, UpdateDomainOptionsTlsEnum::class) : SdkNotGiven::Value),
+            capabilities: (property_exists($data, "capabilities") && $data->capabilities !== null ? SdkClient::hydrateClass($data->capabilities, DomainCapabilities::class) : SdkNotGiven::Value),
+            trackingSubdomain: (property_exists($data, "tracking_subdomain") && $data->tracking_subdomain !== null ? SdkClient::stringValue($data->tracking_subdomain) : SdkNotGiven::Value),
         );
     }
 }
@@ -260,8 +260,8 @@ class UpdateDomainResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
         );
     }
 }
@@ -319,8 +319,8 @@ class VerifyDomainResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }

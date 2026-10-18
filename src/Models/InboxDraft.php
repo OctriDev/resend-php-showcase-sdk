@@ -268,9 +268,9 @@ class InboxDraftEventData implements \JsonSerializable
             source: SdkClient::hydrateStringEnumOrString($data->source, InboxEventSource::class),
             inboxId: SdkClient::stringValue($data->inbox_id),
             draftId: SdkClient::stringValue($data->draft_id),
-            threadId: (property_exists($data, "thread_id") ? SdkClient::stringValue($data->thread_id) : SdkNotGiven::Value),
-            thread: (property_exists($data, "thread") ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
-            draft: (property_exists($data, "draft") ? SdkClient::hydrateClass($data->draft, InboxEventDraft::class) : SdkNotGiven::Value),
+            threadId: (property_exists($data, "thread_id") && $data->thread_id !== null ? SdkClient::stringValue($data->thread_id) : SdkNotGiven::Value),
+            thread: (property_exists($data, "thread") && $data->thread !== null ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
+            draft: (property_exists($data, "draft") && $data->draft !== null ? SdkClient::hydrateClass($data->draft, InboxEventDraft::class) : SdkNotGiven::Value),
         );
     }
 }

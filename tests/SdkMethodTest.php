@@ -134,6 +134,16 @@ final class SdkMethodTest extends TestCase
                 true,
             )));
         }
+        if (count($matches) > 1) {
+            // A catch-all branch (Vercel's type:other) accepts the tag a
+            // dedicated branch pins; the branch pinning more of the fixture wins.
+            $pinned = static fn(object $match): int => count(array_filter(
+                get_object_vars($match),
+                static fn(mixed $field): bool => $field instanceof SdkOpenEnum || $field instanceof \UnitEnum,
+            ));
+            $most = max(array_map($pinned, $matches));
+            $matches = array_values(array_filter($matches, static fn(object $match): bool => $pinned($match) === $most));
+        }
         if (count($matches) !== 1) {
             throw new \RuntimeException(sprintf(
                 'Generated interface parameter %s resolved to %d concrete models.',

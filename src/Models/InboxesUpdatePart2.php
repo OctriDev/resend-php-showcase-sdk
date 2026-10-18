@@ -60,8 +60,8 @@ class UpdateInboxLabelOptions implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            color: (property_exists($data, "color") ? SdkClient::stringValue($data->color) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            color: (property_exists($data, "color") && $data->color !== null ? SdkClient::stringValue($data->color) : SdkNotGiven::Value),
         );
     }
 }
@@ -180,8 +180,8 @@ class UpdateInboxOptions implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            fromName: (property_exists($data, "from_name") ? SdkClient::stringValue($data->from_name) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            fromName: (property_exists($data, "from_name") && $data->from_name !== null ? SdkClient::stringValue($data->from_name) : SdkNotGiven::Value),
         );
     }
 }
@@ -356,10 +356,10 @@ class UpdateInboxThreadOptions implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            read: (property_exists($data, "read") ? SdkClient::boolValue($data->read) : SdkNotGiven::Value),
-            folder: (property_exists($data, "folder") ? SdkClient::hydrateStringEnumOrString($data->folder, UpdateInboxThreadOptionsFolderEnum::class) : SdkNotGiven::Value),
-            addLabelIds: (property_exists($data, "add_label_ids") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->add_label_ids))) : SdkNotGiven::Value),
-            removeLabelIds: (property_exists($data, "remove_label_ids") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->remove_label_ids))) : SdkNotGiven::Value),
+            read: (property_exists($data, "read") && $data->read !== null ? SdkClient::boolValue($data->read) : SdkNotGiven::Value),
+            folder: (property_exists($data, "folder") && $data->folder !== null ? SdkClient::hydrateStringEnumOrString($data->folder, UpdateInboxThreadOptionsFolderEnum::class) : SdkNotGiven::Value),
+            addLabelIds: (property_exists($data, "add_label_ids") && $data->add_label_ids !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->add_label_ids))) : SdkNotGiven::Value),
+            removeLabelIds: (property_exists($data, "remove_label_ids") && $data->remove_label_ids !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->remove_label_ids))) : SdkNotGiven::Value),
         );
     }
 }

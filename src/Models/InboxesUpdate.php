@@ -141,7 +141,7 @@ class UpdateInboxAgentOptions implements \JsonSerializable
         return new self(
             instructions: (property_exists($data, "instructions") ? ($data->instructions === null ? null : SdkClient::stringValue($data->instructions)) : SdkNotGiven::Value),
             tone: (property_exists($data, "tone") ? ($data->tone === null ? null : SdkClient::hydrateStringEnumOrString($data->tone, UpdateInboxAgentOptionsToneEnum::class)) : SdkNotGiven::Value),
-            enabledActions: (property_exists($data, "enabled_actions") ? array_values(array_map(static fn($item) => SdkClient::hydrateStringEnumOrString($item, UpdateInboxAgentOptionsEnabledActionsItemEnum::class), SdkClient::arrayValue($data->enabled_actions))) : SdkNotGiven::Value),
+            enabledActions: (property_exists($data, "enabled_actions") && $data->enabled_actions !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateStringEnumOrString($item, UpdateInboxAgentOptionsEnabledActionsItemEnum::class), SdkClient::arrayValue($data->enabled_actions))) : SdkNotGiven::Value),
         );
     }
 }
