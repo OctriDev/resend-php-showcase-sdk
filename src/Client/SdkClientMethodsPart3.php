@@ -10,6 +10,29 @@ namespace octridev_resend;
 trait SdkClientMethodsPart3
 {
     /**
+     * @template T of object
+     * @param class-string<T> $expectedType
+     * @param list<class-string<object>> $variants
+     * @param array<array-key, class-string<object>|\Closure(object): object> $mapping
+     * @param class-string<object>|null $unknown the member a tag no variant is mapped to decodes as
+     * @return T
+     */
+    public static function hydrateUnionAs(
+        mixed $value,
+        string $expectedType,
+        array $variants,
+        ?string $discriminator = null,
+        array $mapping = [],
+        ?string $unknown = null,
+    ): object {
+        $result = self::hydrateUnion($value, $variants, $discriminator, $mapping, $unknown);
+        if (!$result instanceof $expectedType) {
+            throw new \UnexpectedValueException("Hydrated union does not implement {$expectedType}");
+        }
+        return $result;
+    }
+
+    /**
      * Tries the nominal object-union decoder first, then a structurally typed
      * map decoder when the object does not satisfy any declared model variant.
      *
@@ -296,7 +319,8 @@ trait SdkClientMethodsPart3
             $headers[] = "Content-Type: {$contentType}";
         }
         return $headers;
-    }/**
+    }
+/**
      * Security alternatives this package can satisfy, per operation, keyed by
      * the identifier the generated request layer reports. Which alternatives
      * are supported is resolved while generating the SDK because both the
@@ -307,15 +331,4 @@ trait SdkClientMethodsPart3
      * @var array<string, list<list<string>>>
      */
     private const OPERATION_SECURITY = ["emailsSend" => [["bearerAuth"]],"emailsList" => [["bearerAuth"]],"emailsGet" => [["bearerAuth"]],"emailsUpdate" => [["bearerAuth"]],"emailsCancel" => [["bearerAuth"]],"emailsShare" => [["bearerAuth"]],"emailsSendBatch" => [["bearerAuth"]],"emailsListAttachments" => [["bearerAuth"]],"emailsGetAttachment" => [["bearerAuth"]],"list" => [["bearerAuth"]],"get" => [["bearerAuth"]],"listAttachments" => [["bearerAuth"]],"getAttachment" => [["bearerAuth"]],"getMetrics" => [["bearerAuth"]],"domainsCreate" => [["bearerAuth"]],"domainsList" => [["bearerAuth"]],"domainsGet" => [["bearerAuth"]],"domainsUpdate" => [["bearerAuth"]],"domainsRemove" => [["bearerAuth"]],"domainsVerify" => [["bearerAuth"]],"domainsCreateClaim" => [["bearerAuth"]],"domainsGetClaim" => [["bearerAuth"]],"domainsVerifyClaim" => [["bearerAuth"]],"apiKeysCreate" => [["bearerAuth"]],"apiKeysList" => [["bearerAuth"]],"apiKeysUpdate" => [["bearerAuth"]],"apiKeysRemove" => [["bearerAuth"]],"listGrants" => [["bearerAuth"]],"revokeGrant" => [["bearerAuth"]],"templatesCreate" => [["bearerAuth"]],"templatesList" => [["bearerAuth"]],"templatesGet" => [["bearerAuth"]],"templatesUpdate" => [["bearerAuth"]],"templatesRemove" => [["bearerAuth"]],"templatesPublish" => [["bearerAuth"]],"templatesDuplicate" => [["bearerAuth"]],"audiencesCreate" => [["bearerAuth"]],"audiencesList" => [["bearerAuth"]],"audiencesRemove" => [["bearerAuth"]],"audiencesGet" => [["bearerAuth"]],"contactsCreate" => [["bearerAuth"]],"contactsList" => [["bearerAuth"]],"contactsCreateImport" => [["bearerAuth"]],"contactsListImports" => [["bearerAuth"]],"contactsGetImport" => [["bearerAuth"]],"contactsGet" => [["bearerAuth"]],"contactsUpdate" => [["bearerAuth"]],"contactsRemove" => [["bearerAuth"]],"broadcastsCreate" => [["bearerAuth"]],"broadcastsList" => [["bearerAuth"]],"broadcastsRemove" => [["bearerAuth"]],"broadcastsGet" => [["bearerAuth"]],"broadcastsUpdate" => [["bearerAuth"]],"broadcastsSend" => [["bearerAuth"]],"broadcastsCancel" => [["bearerAuth"]],"broadcastsDuplicate" => [["bearerAuth"]],"listRecipients" => [["bearerAuth"]],"broadcastsListClickedLinks" => [["bearerAuth"]],"webhooksCreate" => [["bearerAuth"]],"webhooksList" => [["bearerAuth"]],"webhooksGet" => [["bearerAuth"]],"webhooksUpdate" => [["bearerAuth"]],"webhooksRemove" => [["bearerAuth"]],"webhooksRotateSigningSecret" => [["bearerAuth"]],"webhooksListEvents" => [["bearerAuth"]],"webhooksGetEvent" => [["bearerAuth"]],"webhooksReplayEvent" => [["bearerAuth"]],"webhooksListEventAttempts" => [["bearerAuth"]],"segmentsCreate" => [["bearerAuth"]],"segmentsList" => [["bearerAuth"]],"segmentsGet" => [["bearerAuth"]],"segmentsUpdate" => [["bearerAuth"]],"segmentsRemove" => [["bearerAuth"]],"segmentsListContacts" => [["bearerAuth"]],"topicsCreate" => [["bearerAuth"]],"topicsList" => [["bearerAuth"]],"topicsGet" => [["bearerAuth"]],"topicsUpdate" => [["bearerAuth"]],"topicsRemove" => [["bearerAuth"]],"contactPropertiesCreate" => [["bearerAuth"]],"contactPropertiesList" => [["bearerAuth"]],"contactPropertiesGet" => [["bearerAuth"]],"contactPropertiesUpdate" => [["bearerAuth"]],"contactPropertiesRemove" => [["bearerAuth"]],"contactsListSegments" => [["bearerAuth"]],"contactsAddSegment" => [["bearerAuth"]],"contactsRemoveSegment" => [["bearerAuth"]],"contactsListTopics" => [["bearerAuth"]],"contactsUpdateTopics" => [["bearerAuth"]],"logsList" => [["bearerAuth"]],"logsGet" => [["bearerAuth"]],"automationsCreate" => [["bearerAuth"]],"automationsList" => [["bearerAuth"]],"automationsGet" => [["bearerAuth"]],"automationsUpdate" => [["bearerAuth"]],"automationsRemove" => [["bearerAuth"]],"automationsDuplicate" => [["bearerAuth"]],"automationsStop" => [["bearerAuth"]],"automationsListRuns" => [["bearerAuth"]],"automationsGetRun" => [["bearerAuth"]],"eventsCreate" => [["bearerAuth"]],"eventsList" => [["bearerAuth"]],"eventsSend" => [["bearerAuth"]],"eventsGet" => [["bearerAuth"]],"eventsUpdate" => [["bearerAuth"]],"eventsRemove" => [["bearerAuth"]],"suppressionsAdd" => [["bearerAuth"]],"suppressionsList" => [["bearerAuth"]],"suppressionsBatchAdd" => [["bearerAuth"]],"suppressionsBatchRemove" => [["bearerAuth"]],"suppressionsGet" => [["bearerAuth"]],"suppressionsRemove" => [["bearerAuth"]],"usageGet" => [["bearerAuth"]],"inboxesCreate" => [["bearerAuth"]],"inboxesList" => [["bearerAuth"]],"inboxesGet" => [["bearerAuth"]],"inboxesUpdate" => [["bearerAuth"]],"inboxesRemove" => [["bearerAuth"]],"inboxesGetAgent" => [["bearerAuth"]],"inboxesUpdateAgent" => [["bearerAuth"]],"inboxesListLabels" => [["bearerAuth"]],"inboxesCreateLabel" => [["bearerAuth"]],"inboxesUpdateLabel" => [["bearerAuth"]],"inboxesRemoveLabel" => [["bearerAuth"]],"inboxesListThreads" => [["bearerAuth"]],"inboxesSearchThreads" => [["bearerAuth"]],"inboxesGetThread" => [["bearerAuth"]],"inboxesUpdateThread" => [["bearerAuth"]],"inboxesRemoveThread" => [["bearerAuth"]],"inboxesListThreadEmails" => [["bearerAuth"]],"inboxesGetThreadEmail" => [["bearerAuth"]],"inboxesReplyThreadEmail" => [["bearerAuth"]],"inboxesForwardThreadEmail" => [["bearerAuth"]],"inboxesListDrafts" => [["bearerAuth"]],"inboxesCreateDraft" => [["bearerAuth"]],"inboxesGetDraft" => [["bearerAuth"]],"inboxesUpdateDraft" => [["bearerAuth"]],"inboxesRemoveDraft" => [["bearerAuth"]],"inboxesSendDraft" => [["bearerAuth"]],];
-
-    /** Whether the caller configured the credential this scheme reads. */
-    private static function hasCredential(?ClientAuthConfig $auth, string $scheme): bool
-    {
-        if ($auth === null) {
-            return false;
-        }
-
-        return match ($scheme) {"bearerAuth" => $auth->bearerAuth !== null,default => false,
-        };
-    }
 }

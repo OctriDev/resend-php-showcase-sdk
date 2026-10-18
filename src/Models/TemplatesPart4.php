@@ -120,13 +120,13 @@ class TemplateListItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, TemplateListItemStatusEnum::class) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, TemplateListItemStatusEnum::class) : SdkNotGiven::Value),
             publishedAt: (property_exists($data, "published_at") ? ($data->published_at === null ? null : SdkClient::stringValue($data->published_at)) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            updatedAt: (property_exists($data, "updated_at") ? SdkClient::stringValue($data->updated_at) : SdkNotGiven::Value),
-            alias: (property_exists($data, "alias") ? SdkClient::stringValue($data->alias) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            updatedAt: (property_exists($data, "updated_at") && $data->updated_at !== null ? SdkClient::stringValue($data->updated_at) : SdkNotGiven::Value),
+            alias: (property_exists($data, "alias") && $data->alias !== null ? SdkClient::stringValue($data->alias) : SdkNotGiven::Value),
         );
     }
 }
@@ -250,10 +250,10 @@ class TemplateVariable implements \JsonSerializable
         return new self(
             key: SdkClient::stringValue($data->key),
             type: SdkClient::hydrateStringEnumOrString($data->type, TemplateVariableTypeEnum::class),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            fallbackValue: (property_exists($data, "fallback_value") ? (is_array($data->fallback_value) ? array_values(array_map(static fn($item) => $item, SdkClient::arrayValue($data->fallback_value))) : (is_bool($data->fallback_value) ? SdkClient::boolValue($data->fallback_value) : (is_float($data->fallback_value) || is_int($data->fallback_value) ? SdkClient::floatValue($data->fallback_value) : SdkClient::stringValue($data->fallback_value)))) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            updatedAt: (property_exists($data, "updated_at") ? SdkClient::stringValue($data->updated_at) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            fallbackValue: (property_exists($data, "fallback_value") && $data->fallback_value !== null ? ((is_array($data->fallback_value) || is_object($data->fallback_value)) ? SdkClient::stringMapValue($data->fallback_value) : (is_bool($data->fallback_value) ? SdkClient::boolValue($data->fallback_value) : (is_float($data->fallback_value) || is_int($data->fallback_value) ? SdkClient::floatValue($data->fallback_value) : SdkClient::stringValue($data->fallback_value)))) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            updatedAt: (property_exists($data, "updated_at") && $data->updated_at !== null ? SdkClient::stringValue($data->updated_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -341,7 +341,7 @@ class TemplateVariableInput implements \JsonSerializable
         return new self(
             key: SdkClient::stringValue($data->key),
             type: SdkClient::hydrateStringEnumOrString($data->type, TemplateVariableInputTypeEnum::class),
-            fallbackValue: (property_exists($data, "fallback_value") ? (is_array($data->fallback_value) ? array_values(array_map(static fn($item) => $item, SdkClient::arrayValue($data->fallback_value))) : (is_bool($data->fallback_value) ? SdkClient::boolValue($data->fallback_value) : (is_float($data->fallback_value) || is_int($data->fallback_value) ? SdkClient::floatValue($data->fallback_value) : SdkClient::stringValue($data->fallback_value)))) : SdkNotGiven::Value),
+            fallbackValue: (property_exists($data, "fallback_value") && $data->fallback_value !== null ? ((is_array($data->fallback_value) || is_object($data->fallback_value)) ? SdkClient::stringMapValue($data->fallback_value) : (is_bool($data->fallback_value) ? SdkClient::boolValue($data->fallback_value) : (is_float($data->fallback_value) || is_int($data->fallback_value) ? SdkClient::floatValue($data->fallback_value) : SdkClient::stringValue($data->fallback_value)))) : SdkNotGiven::Value),
         );
     }
 }

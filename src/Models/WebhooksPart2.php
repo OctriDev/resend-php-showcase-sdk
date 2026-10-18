@@ -120,13 +120,13 @@ class GetWebhookResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            endpoint: (property_exists($data, "endpoint") ? SdkClient::stringValue($data->endpoint) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            endpoint: (property_exists($data, "endpoint") && $data->endpoint !== null ? SdkClient::stringValue($data->endpoint) : SdkNotGiven::Value),
             events: (property_exists($data, "events") ? ($data->events === null ? null : array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->events)))) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::stringValue($data->status) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            signingSecret: (property_exists($data, "signing_secret") ? SdkClient::stringValue($data->signing_secret) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::stringValue($data->status) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            signingSecret: (property_exists($data, "signing_secret") && $data->signing_secret !== null ? SdkClient::stringValue($data->signing_secret) : SdkNotGiven::Value),
         );
     }
 }
@@ -208,10 +208,10 @@ class ListWebhookEventAttemptsResponseDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            httpStatusCode: (property_exists($data, "http_status_code") ? SdkClient::intValue($data->http_status_code) : SdkNotGiven::Value),
-            response: (property_exists($data, "response") ? SdkClient::stringValue($data->response) : SdkNotGiven::Value),
-            sentAt: (property_exists($data, "sent_at") ? SdkClient::stringValue($data->sent_at) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            httpStatusCode: (property_exists($data, "http_status_code") && $data->http_status_code !== null ? SdkClient::intValue($data->http_status_code) : SdkNotGiven::Value),
+            response: (property_exists($data, "response") && $data->response !== null ? SdkClient::stringValue($data->response) : SdkNotGiven::Value),
+            sentAt: (property_exists($data, "sent_at") && $data->sent_at !== null ? SdkClient::stringValue($data->sent_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -281,9 +281,9 @@ class ListWebhookEventAttemptsResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListWebhookEventAttemptsResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListWebhookEventAttemptsResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }

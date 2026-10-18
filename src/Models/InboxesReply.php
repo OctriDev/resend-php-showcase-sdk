@@ -134,10 +134,10 @@ class ReplyInboxThreadEmailOptions implements \JsonSerializable
         return new self(
             cc: (property_exists($data, "cc") ? ($data->cc === null ? null : (is_array($data->cc) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkClient::stringValue($data->cc))) : SdkNotGiven::Value),
             bcc: (property_exists($data, "bcc") ? ($data->bcc === null ? null : (is_array($data->bcc) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))) : SdkClient::stringValue($data->bcc))) : SdkNotGiven::Value),
-            html: (property_exists($data, "html") ? SdkClient::stringValue($data->html) : SdkNotGiven::Value),
-            text: (property_exists($data, "text") ? SdkClient::stringValue($data->text) : SdkNotGiven::Value),
-            subject: (property_exists($data, "subject") ? SdkClient::stringValue($data->subject) : SdkNotGiven::Value),
-            replyAll: (property_exists($data, "reply_all") ? SdkClient::boolValue($data->reply_all) : SdkNotGiven::Value),
+            html: (property_exists($data, "html") && $data->html !== null ? SdkClient::stringValue($data->html) : SdkNotGiven::Value),
+            text: (property_exists($data, "text") && $data->text !== null ? SdkClient::stringValue($data->text) : SdkNotGiven::Value),
+            subject: (property_exists($data, "subject") && $data->subject !== null ? SdkClient::stringValue($data->subject) : SdkNotGiven::Value),
+            replyAll: (property_exists($data, "reply_all") && $data->reply_all !== null ? SdkClient::boolValue($data->reply_all) : SdkNotGiven::Value),
             attachments: (property_exists($data, "attachments") ? ($data->attachments === null ? null : array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Attachment::class), SdkClient::arrayValue($data->attachments)))) : SdkNotGiven::Value),
             headers: (property_exists($data, "headers") ? ($data->headers === null ? null : SdkClient::mapValues(SdkClient::stringMapValue($data->headers), static fn($item) => SdkClient::stringValue($item))) : SdkNotGiven::Value),
         );

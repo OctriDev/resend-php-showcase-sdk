@@ -132,9 +132,9 @@ class InboxDraftSentEventData implements \JsonSerializable
             threadId: SdkClient::stringValue($data->thread_id),
             emailId: SdkClient::stringValue($data->email_id),
             draftId: SdkClient::stringValue($data->draft_id),
-            thread: (property_exists($data, "thread") ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
-            email: (property_exists($data, "email") ? SdkClient::hydrateClass($data->email, InboxEventEmail::class) : SdkNotGiven::Value),
-            draft: (property_exists($data, "draft") ? SdkClient::hydrateClass($data->draft, InboxEventDraft::class) : SdkNotGiven::Value),
+            thread: (property_exists($data, "thread") && $data->thread !== null ? SdkClient::hydrateClass($data->thread, InboxThreadSummary::class) : SdkNotGiven::Value),
+            email: (property_exists($data, "email") && $data->email !== null ? SdkClient::hydrateClass($data->email, InboxEventEmail::class) : SdkNotGiven::Value),
+            draft: (property_exists($data, "draft") && $data->draft !== null ? SdkClient::hydrateClass($data->draft, InboxEventDraft::class) : SdkNotGiven::Value),
         );
     }
 }

@@ -286,8 +286,8 @@ class ContactEventData implements \JsonSerializable
             updatedAt: SdkClient::stringValue($data->updated_at),
             email: SdkClient::stringValue($data->email),
             unsubscribed: SdkClient::boolValue($data->unsubscribed),
-            audienceId: (property_exists($data, "audience_id") ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
-            segmentIds: (property_exists($data, "segment_ids") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->segment_ids))) : SdkNotGiven::Value),
+            audienceId: (property_exists($data, "audience_id") && $data->audience_id !== null ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
+            segmentIds: (property_exists($data, "segment_ids") && $data->segment_ids !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->segment_ids))) : SdkNotGiven::Value),
             firstName: (property_exists($data, "first_name") ? ($data->first_name === null ? null : SdkClient::stringValue($data->first_name)) : SdkNotGiven::Value),
             lastName: (property_exists($data, "last_name") ? ($data->last_name === null ? null : SdkClient::stringValue($data->last_name)) : SdkNotGiven::Value),
         );

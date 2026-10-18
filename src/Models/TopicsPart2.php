@@ -123,12 +123,12 @@ class ListTopicsResponseSuccessDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            description: (property_exists($data, "description") ? SdkClient::stringValue($data->description) : SdkNotGiven::Value),
-            defaultSubscription: (property_exists($data, "default_subscription") ? SdkClient::hydrateStringEnumOrString($data->default_subscription, ListTopicsResponseSuccessDataItemDefaultSubscriptionEnum::class) : SdkNotGiven::Value),
-            visibility: (property_exists($data, "visibility") ? SdkClient::hydrateStringEnumOrString($data->visibility, ListTopicsResponseSuccessDataItemVisibilityEnum::class) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            description: (property_exists($data, "description") && $data->description !== null ? SdkClient::stringValue($data->description) : SdkNotGiven::Value),
+            defaultSubscription: (property_exists($data, "default_subscription") && $data->default_subscription !== null ? SdkClient::hydrateStringEnumOrString($data->default_subscription, ListTopicsResponseSuccessDataItemDefaultSubscriptionEnum::class) : SdkNotGiven::Value),
+            visibility: (property_exists($data, "visibility") && $data->visibility !== null ? SdkClient::hydrateStringEnumOrString($data->visibility, ListTopicsResponseSuccessDataItemVisibilityEnum::class) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -198,9 +198,9 @@ class ListTopicsResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListTopicsResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListTopicsResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -270,9 +270,9 @@ class RemoveTopicResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            deleted: (property_exists($data, "deleted") ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            deleted: (property_exists($data, "deleted") && $data->deleted !== null ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
         );
     }
 }

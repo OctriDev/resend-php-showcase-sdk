@@ -74,7 +74,7 @@ class ContactsCreateSegmentsItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }
@@ -147,8 +147,8 @@ class ContactsCreateTopicsItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            subscription: (property_exists($data, "subscription") ? SdkClient::hydrateStringEnumOrString($data->subscription, ContactsCreateTopicsItemSubscriptionEnum::class) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            subscription: (property_exists($data, "subscription") && $data->subscription !== null ? SdkClient::hydrateStringEnumOrString($data->subscription, ContactsCreateTopicsItemSubscriptionEnum::class) : SdkNotGiven::Value),
         );
     }
 }
@@ -221,8 +221,8 @@ class ContactsUpdateTopicsTopicsItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            subscription: (property_exists($data, "subscription") ? SdkClient::hydrateStringEnumOrString($data->subscription, ContactsUpdateTopicsTopicsItemSubscriptionEnum::class) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            subscription: (property_exists($data, "subscription") && $data->subscription !== null ? SdkClient::hydrateStringEnumOrString($data->subscription, ContactsUpdateTopicsTopicsItemSubscriptionEnum::class) : SdkNotGiven::Value),
         );
     }
 }

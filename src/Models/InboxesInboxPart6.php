@@ -120,13 +120,13 @@ class InboxThreadSearchResultVariant1Highlights implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            subject: (property_exists($data, "subject") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->subject))) : SdkNotGiven::Value),
-            body: (property_exists($data, "body") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->body))) : SdkNotGiven::Value),
-            from: (property_exists($data, "from") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->from))) : SdkNotGiven::Value),
-            to: (property_exists($data, "to") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkNotGiven::Value),
-            cc: (property_exists($data, "cc") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkNotGiven::Value),
-            bcc: (property_exists($data, "bcc") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))) : SdkNotGiven::Value),
-            attachments: (property_exists($data, "attachments") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->attachments))) : SdkNotGiven::Value),
+            subject: (property_exists($data, "subject") && $data->subject !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->subject))) : SdkNotGiven::Value),
+            body: (property_exists($data, "body") && $data->body !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->body))) : SdkNotGiven::Value),
+            from: (property_exists($data, "from") && $data->from !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->from))) : SdkNotGiven::Value),
+            to: (property_exists($data, "to") && $data->to !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkNotGiven::Value),
+            cc: (property_exists($data, "cc") && $data->cc !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkNotGiven::Value),
+            bcc: (property_exists($data, "bcc") && $data->bcc !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))) : SdkNotGiven::Value),
+            attachments: (property_exists($data, "attachments") && $data->attachments !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->attachments))) : SdkNotGiven::Value),
         );
     }
 }
@@ -316,13 +316,13 @@ class InboxThreadSearchResultHighlights implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            subject: (property_exists($data, "subject") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->subject))) : SdkNotGiven::Value),
-            body: (property_exists($data, "body") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->body))) : SdkNotGiven::Value),
-            from: (property_exists($data, "from") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->from))) : SdkNotGiven::Value),
-            to: (property_exists($data, "to") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkNotGiven::Value),
-            cc: (property_exists($data, "cc") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkNotGiven::Value),
-            bcc: (property_exists($data, "bcc") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))) : SdkNotGiven::Value),
-            attachments: (property_exists($data, "attachments") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->attachments))) : SdkNotGiven::Value),
+            subject: (property_exists($data, "subject") && $data->subject !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->subject))) : SdkNotGiven::Value),
+            body: (property_exists($data, "body") && $data->body !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->body))) : SdkNotGiven::Value),
+            from: (property_exists($data, "from") && $data->from !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->from))) : SdkNotGiven::Value),
+            to: (property_exists($data, "to") && $data->to !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkNotGiven::Value),
+            cc: (property_exists($data, "cc") && $data->cc !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkNotGiven::Value),
+            bcc: (property_exists($data, "bcc") && $data->bcc !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))) : SdkNotGiven::Value),
+            attachments: (property_exists($data, "attachments") && $data->attachments !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->attachments))) : SdkNotGiven::Value),
         );
     }
 }

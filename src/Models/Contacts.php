@@ -72,9 +72,9 @@ class AddContactToSegmentResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            contactId: (property_exists($data, "contact_id") ? SdkClient::stringValue($data->contact_id) : SdkNotGiven::Value),
-            segmentId: (property_exists($data, "segment_id") ? SdkClient::stringValue($data->segment_id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            contactId: (property_exists($data, "contact_id") && $data->contact_id !== null ? SdkClient::stringValue($data->contact_id) : SdkNotGiven::Value),
+            segmentId: (property_exists($data, "segment_id") && $data->segment_id !== null ? SdkClient::stringValue($data->segment_id) : SdkNotGiven::Value),
         );
     }
 }
@@ -197,12 +197,12 @@ class ContactImport implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, ContactImportStatusEnum::class) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, ContactImportStatusEnum::class) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
             completedAt: (property_exists($data, "completed_at") ? ($data->completed_at === null ? null : SdkClient::stringValue($data->completed_at)) : SdkNotGiven::Value),
-            counts: (property_exists($data, "counts") ? SdkClient::hydrateClass($data->counts, ContactImportCounts::class) : SdkNotGiven::Value),
+            counts: (property_exists($data, "counts") && $data->counts !== null ? SdkClient::hydrateClass($data->counts, ContactImportCounts::class) : SdkNotGiven::Value),
         );
     }
 }
@@ -296,11 +296,11 @@ class ContactImportCounts implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            total: (property_exists($data, "total") ? SdkClient::intValue($data->total) : SdkNotGiven::Value),
-            created: (property_exists($data, "created") ? SdkClient::intValue($data->created) : SdkNotGiven::Value),
-            updated: (property_exists($data, "updated") ? SdkClient::intValue($data->updated) : SdkNotGiven::Value),
-            skipped: (property_exists($data, "skipped") ? SdkClient::intValue($data->skipped) : SdkNotGiven::Value),
-            failed: (property_exists($data, "failed") ? SdkClient::intValue($data->failed) : SdkNotGiven::Value),
+            total: (property_exists($data, "total") && $data->total !== null ? SdkClient::intValue($data->total) : SdkNotGiven::Value),
+            created: (property_exists($data, "created") && $data->created !== null ? SdkClient::intValue($data->created) : SdkNotGiven::Value),
+            updated: (property_exists($data, "updated") && $data->updated !== null ? SdkClient::intValue($data->updated) : SdkNotGiven::Value),
+            skipped: (property_exists($data, "skipped") && $data->skipped !== null ? SdkClient::intValue($data->skipped) : SdkNotGiven::Value),
+            failed: (property_exists($data, "failed") && $data->failed !== null ? SdkClient::intValue($data->failed) : SdkNotGiven::Value),
         );
     }
 }

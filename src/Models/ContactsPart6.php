@@ -72,9 +72,9 @@ class RemoveContactResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            deleted: (property_exists($data, "deleted") ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            deleted: (property_exists($data, "deleted") && $data->deleted !== null ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
         );
     }
 }
@@ -168,11 +168,11 @@ class UpdateContactOptions implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            email: (property_exists($data, "email") ? SdkClient::stringValue($data->email) : SdkNotGiven::Value),
-            firstName: (property_exists($data, "first_name") ? SdkClient::stringValue($data->first_name) : SdkNotGiven::Value),
-            lastName: (property_exists($data, "last_name") ? SdkClient::stringValue($data->last_name) : SdkNotGiven::Value),
-            unsubscribed: (property_exists($data, "unsubscribed") ? SdkClient::boolValue($data->unsubscribed) : SdkNotGiven::Value),
-            properties: (property_exists($data, "properties") ? SdkClient::mapValues(SdkClient::stringMapValue($data->properties), static fn($item) => ($item === null ? null : SdkClient::stringValue($item))) : SdkNotGiven::Value),
+            email: (property_exists($data, "email") && $data->email !== null ? SdkClient::stringValue($data->email) : SdkNotGiven::Value),
+            firstName: (property_exists($data, "first_name") && $data->first_name !== null ? SdkClient::stringValue($data->first_name) : SdkNotGiven::Value),
+            lastName: (property_exists($data, "last_name") && $data->last_name !== null ? SdkClient::stringValue($data->last_name) : SdkNotGiven::Value),
+            unsubscribed: (property_exists($data, "unsubscribed") && $data->unsubscribed !== null ? SdkClient::boolValue($data->unsubscribed) : SdkNotGiven::Value),
+            properties: (property_exists($data, "properties") && $data->properties !== null ? SdkClient::mapValues(SdkClient::stringMapValue($data->properties), static fn($item) => ($item === null ? null : SdkClient::stringValue($item))) : SdkNotGiven::Value),
         );
     }
 }
@@ -230,8 +230,8 @@ class UpdateContactResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }
@@ -304,8 +304,8 @@ class UpdateContactTopicsOptionsTopicsItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            subscription: (property_exists($data, "subscription") ? SdkClient::hydrateStringEnumOrString($data->subscription, UpdateContactTopicsOptionsTopicsItemSubscriptionEnum::class) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            subscription: (property_exists($data, "subscription") && $data->subscription !== null ? SdkClient::hydrateStringEnumOrString($data->subscription, UpdateContactTopicsOptionsTopicsItemSubscriptionEnum::class) : SdkNotGiven::Value),
         );
     }
 }

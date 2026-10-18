@@ -151,8 +151,8 @@ class CreateInboxDraftOptions implements \JsonSerializable
             html: (property_exists($data, "html") ? ($data->html === null ? null : SdkClient::stringValue($data->html)) : SdkNotGiven::Value),
             text: (property_exists($data, "text") ? ($data->text === null ? null : SdkClient::stringValue($data->text)) : SdkNotGiven::Value),
             attachments: (property_exists($data, "attachments") ? ($data->attachments === null ? null : array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, InboxDraftAttachmentInput::class), SdkClient::arrayValue($data->attachments)))) : SdkNotGiven::Value),
-            threadId: (property_exists($data, "thread_id") ? SdkClient::stringValue($data->thread_id) : SdkNotGiven::Value),
-            replyToEmailId: (property_exists($data, "reply_to_email_id") ? SdkClient::stringValue($data->reply_to_email_id) : SdkNotGiven::Value),
+            threadId: (property_exists($data, "thread_id") && $data->thread_id !== null ? SdkClient::stringValue($data->thread_id) : SdkNotGiven::Value),
+            replyToEmailId: (property_exists($data, "reply_to_email_id") && $data->reply_to_email_id !== null ? SdkClient::stringValue($data->reply_to_email_id) : SdkNotGiven::Value),
         );
     }
 }
@@ -267,7 +267,7 @@ class CreateInboxLabelOptions implements \JsonSerializable
         if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
-            color: (property_exists($data, "color") ? SdkClient::stringValue($data->color) : SdkNotGiven::Value),
+            color: (property_exists($data, "color") && $data->color !== null ? SdkClient::stringValue($data->color) : SdkNotGiven::Value),
         );
     }
 }

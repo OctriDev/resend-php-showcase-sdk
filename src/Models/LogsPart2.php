@@ -108,11 +108,11 @@ class LogSummary implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            endpoint: (property_exists($data, "endpoint") ? SdkClient::stringValue($data->endpoint) : SdkNotGiven::Value),
-            method: (property_exists($data, "method") ? SdkClient::hydrateStringEnumOrString($data->method, LogSummaryMethodEnum::class) : SdkNotGiven::Value),
-            responseStatus: (property_exists($data, "response_status") ? SdkClient::intValue($data->response_status) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            endpoint: (property_exists($data, "endpoint") && $data->endpoint !== null ? SdkClient::stringValue($data->endpoint) : SdkNotGiven::Value),
+            method: (property_exists($data, "method") && $data->method !== null ? SdkClient::hydrateStringEnumOrString($data->method, LogSummaryMethodEnum::class) : SdkNotGiven::Value),
+            responseStatus: (property_exists($data, "response_status") && $data->response_status !== null ? SdkClient::intValue($data->response_status) : SdkNotGiven::Value),
             userAgent: (property_exists($data, "user_agent") ? ($data->user_agent === null ? null : SdkClient::stringValue($data->user_agent)) : SdkNotGiven::Value),
         );
     }

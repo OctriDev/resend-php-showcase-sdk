@@ -84,10 +84,10 @@ class ListBroadcastClickedLinksResponseSuccessDataItem implements \JsonSerializa
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            url: (property_exists($data, "url") ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
-            clicks: (property_exists($data, "clicks") ? SdkClient::intValue($data->clicks) : SdkNotGiven::Value),
-            uniqueClicks: (property_exists($data, "unique_clicks") ? SdkClient::intValue($data->unique_clicks) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
+            clicks: (property_exists($data, "clicks") && $data->clicks !== null ? SdkClient::intValue($data->clicks) : SdkNotGiven::Value),
+            uniqueClicks: (property_exists($data, "unique_clicks") && $data->unique_clicks !== null ? SdkClient::intValue($data->unique_clicks) : SdkNotGiven::Value),
         );
     }
 }
@@ -157,9 +157,9 @@ class ListBroadcastClickedLinksResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListBroadcastClickedLinksResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListBroadcastClickedLinksResponseSuccessDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -233,8 +233,8 @@ class ListBroadcastRecipientsResponseSuccessDataItemClickedLinksItem implements 
     public static function fromObject(object $data): self
     {
         return new self(
-            url: (property_exists($data, "url") ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
-            clicks: (property_exists($data, "clicks") ? SdkClient::intValue($data->clicks) : SdkNotGiven::Value),
+            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
+            clicks: (property_exists($data, "clicks") && $data->clicks !== null ? SdkClient::intValue($data->clicks) : SdkNotGiven::Value),
         );
     }
 }
@@ -340,12 +340,12 @@ class ListBroadcastRecipientsResponseSuccessDataItem implements \JsonSerializabl
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
             contactId: (property_exists($data, "contact_id") ? ($data->contact_id === null ? null : SdkClient::stringValue($data->contact_id)) : SdkNotGiven::Value),
-            email: (property_exists($data, "email") ? SdkClient::stringValue($data->email) : SdkNotGiven::Value),
-            count: (property_exists($data, "count") ? SdkClient::intValue($data->count) : SdkNotGiven::Value),
-            bounceType: (property_exists($data, "bounce_type") ? SdkClient::hydrateStringEnumOrString($data->bounce_type, ListBroadcastRecipientsResponseSuccessDataItemBounceTypeEnum::class) : SdkNotGiven::Value),
-            clickedLinks: (property_exists($data, "clicked_links") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListBroadcastRecipientsResponseSuccessDataItemClickedLinksItem::class), SdkClient::arrayValue($data->clicked_links))) : SdkNotGiven::Value),
+            email: (property_exists($data, "email") && $data->email !== null ? SdkClient::stringValue($data->email) : SdkNotGiven::Value),
+            count: (property_exists($data, "count") && $data->count !== null ? SdkClient::intValue($data->count) : SdkNotGiven::Value),
+            bounceType: (property_exists($data, "bounce_type") && $data->bounce_type !== null ? SdkClient::hydrateStringEnumOrString($data->bounce_type, ListBroadcastRecipientsResponseSuccessDataItemBounceTypeEnum::class) : SdkNotGiven::Value),
+            clickedLinks: (property_exists($data, "clicked_links") && $data->clicked_links !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListBroadcastRecipientsResponseSuccessDataItemClickedLinksItem::class), SdkClient::arrayValue($data->clicked_links))) : SdkNotGiven::Value),
         );
     }
 }

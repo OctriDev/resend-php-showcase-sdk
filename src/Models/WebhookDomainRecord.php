@@ -173,7 +173,7 @@ class WebhookDomainRecord implements \JsonSerializable
             type: SdkClient::hydrateStringEnumOrString($data->type, WebhookDomainRecordTypeEnum::class),
             ttl: SdkClient::stringValue($data->ttl),
             status: SdkClient::hydrateStringEnumOrString($data->status, WebhookDomainRecordStatusEnum::class),
-            priority: (property_exists($data, "priority") ? SdkClient::intValue($data->priority) : SdkNotGiven::Value),
+            priority: (property_exists($data, "priority") && $data->priority !== null ? SdkClient::intValue($data->priority) : SdkNotGiven::Value),
         );
     }
 }

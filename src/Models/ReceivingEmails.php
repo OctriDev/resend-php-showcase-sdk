@@ -123,12 +123,12 @@ class GetReceivedEmailResponseAttachmentsItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
             filename: (property_exists($data, "filename") ? ($data->filename === null ? null : SdkClient::stringValue($data->filename)) : SdkNotGiven::Value),
-            contentType: (property_exists($data, "content_type") ? SdkClient::stringValue($data->content_type) : SdkNotGiven::Value),
-            contentId: (property_exists($data, "content_id") ? SdkClient::stringValue($data->content_id) : SdkNotGiven::Value),
+            contentType: (property_exists($data, "content_type") && $data->content_type !== null ? SdkClient::stringValue($data->content_type) : SdkNotGiven::Value),
+            contentId: (property_exists($data, "content_id") && $data->content_id !== null ? SdkClient::stringValue($data->content_id) : SdkNotGiven::Value),
             contentDisposition: (property_exists($data, "content_disposition") ? ($data->content_disposition === null ? null : SdkClient::hydrateStringEnumOrString($data->content_disposition, GetReceivedEmailResponseAttachmentsItemContentDispositionEnum::class)) : SdkNotGiven::Value),
-            size: (property_exists($data, "size") ? SdkClient::intValue($data->size) : SdkNotGiven::Value),
+            size: (property_exists($data, "size") && $data->size !== null ? SdkClient::intValue($data->size) : SdkNotGiven::Value),
         );
     }
 }

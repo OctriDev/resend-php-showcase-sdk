@@ -72,7 +72,7 @@ class InboxEventData implements \JsonSerializable
         return new self(
             source: SdkClient::hydrateStringEnumOrString($data->source, InboxEventSource::class),
             inboxId: SdkClient::stringValue($data->inbox_id),
-            inbox: (property_exists($data, "inbox") ? SdkClient::hydrateClass($data->inbox, Inbox::class) : SdkNotGiven::Value),
+            inbox: (property_exists($data, "inbox") && $data->inbox !== null ? SdkClient::hydrateClass($data->inbox, Inbox::class) : SdkNotGiven::Value),
         );
     }
 }

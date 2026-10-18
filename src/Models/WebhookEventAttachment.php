@@ -96,10 +96,10 @@ class WebhookEventAttachment implements \JsonSerializable
         if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
         return new self(
             id: SdkClient::stringValue($data->id),
-            filename: (property_exists($data, "filename") ? SdkClient::stringValue($data->filename) : SdkNotGiven::Value),
-            contentType: (property_exists($data, "content_type") ? SdkClient::stringValue($data->content_type) : SdkNotGiven::Value),
-            contentDisposition: (property_exists($data, "content_disposition") ? SdkClient::stringValue($data->content_disposition) : SdkNotGiven::Value),
-            contentId: (property_exists($data, "content_id") ? SdkClient::stringValue($data->content_id) : SdkNotGiven::Value),
+            filename: (property_exists($data, "filename") && $data->filename !== null ? SdkClient::stringValue($data->filename) : SdkNotGiven::Value),
+            contentType: (property_exists($data, "content_type") && $data->content_type !== null ? SdkClient::stringValue($data->content_type) : SdkNotGiven::Value),
+            contentDisposition: (property_exists($data, "content_disposition") && $data->content_disposition !== null ? SdkClient::stringValue($data->content_disposition) : SdkNotGiven::Value),
+            contentId: (property_exists($data, "content_id") && $data->content_id !== null ? SdkClient::stringValue($data->content_id) : SdkNotGiven::Value),
         );
     }
 }

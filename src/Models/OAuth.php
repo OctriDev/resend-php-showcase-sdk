@@ -72,9 +72,9 @@ class ListOAuthGrantsResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OAuthGrant::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OAuthGrant::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }
@@ -132,7 +132,7 @@ class OAuthGrantClient implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
             logoUri: (property_exists($data, "logo_uri") ? ($data->logo_uri === null ? null : SdkClient::stringValue($data->logo_uri)) : SdkNotGiven::Value),
         );
     }
@@ -251,13 +251,13 @@ class OAuthGrant implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            clientId: (property_exists($data, "client_id") ? SdkClient::stringValue($data->client_id) : SdkNotGiven::Value),
-            scopes: (property_exists($data, "scopes") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->scopes))) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            clientId: (property_exists($data, "client_id") && $data->client_id !== null ? SdkClient::stringValue($data->client_id) : SdkNotGiven::Value),
+            scopes: (property_exists($data, "scopes") && $data->scopes !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->scopes))) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
             revokedAt: (property_exists($data, "revoked_at") ? ($data->revoked_at === null ? null : SdkClient::stringValue($data->revoked_at)) : SdkNotGiven::Value),
             revokedReason: (property_exists($data, "revoked_reason") ? ($data->revoked_reason === null ? null : SdkClient::stringValue($data->revoked_reason)) : SdkNotGiven::Value),
-            client: (property_exists($data, "client") ? SdkClient::hydrateClass($data->client, OAuthGrantClient::class) : SdkNotGiven::Value),
+            client: (property_exists($data, "client") && $data->client !== null ? SdkClient::hydrateClass($data->client, OAuthGrantClient::class) : SdkNotGiven::Value),
         );
     }
 }
@@ -339,10 +339,10 @@ class RevokeOAuthGrantResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            revokedAt: (property_exists($data, "revoked_at") ? SdkClient::stringValue($data->revoked_at) : SdkNotGiven::Value),
-            revokedReason: (property_exists($data, "revoked_reason") ? SdkClient::stringValue($data->revoked_reason) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            revokedAt: (property_exists($data, "revoked_at") && $data->revoked_at !== null ? SdkClient::stringValue($data->revoked_at) : SdkNotGiven::Value),
+            revokedReason: (property_exists($data, "revoked_reason") && $data->revoked_reason !== null ? SdkClient::stringValue($data->revoked_reason) : SdkNotGiven::Value),
         );
     }
 }

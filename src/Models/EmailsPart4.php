@@ -48,7 +48,7 @@ class ShareEmailOptions implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            expiresIn: (property_exists($data, "expires_in") ? SdkClient::stringValue($data->expires_in) : SdkNotGiven::Value),
+            expiresIn: (property_exists($data, "expires_in") && $data->expires_in !== null ? SdkClient::stringValue($data->expires_in) : SdkNotGiven::Value),
         );
     }
 }
@@ -118,9 +118,9 @@ class ShareEmailResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            url: (property_exists($data, "url") ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
         );
     }
 }
@@ -178,8 +178,8 @@ class Tag implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            value: (property_exists($data, "value") ? SdkClient::stringValue($data->value) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            value: (property_exists($data, "value") && $data->value !== null ? SdkClient::stringValue($data->value) : SdkNotGiven::Value),
         );
     }
 }
@@ -225,7 +225,7 @@ class UpdateEmailOptions implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            scheduledAt: (property_exists($data, "scheduled_at") ? SdkClient::stringValue($data->scheduled_at) : SdkNotGiven::Value),
+            scheduledAt: (property_exists($data, "scheduled_at") && $data->scheduled_at !== null ? SdkClient::stringValue($data->scheduled_at) : SdkNotGiven::Value),
         );
     }
 }

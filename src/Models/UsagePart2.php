@@ -60,7 +60,7 @@ class GetUsageResponseSuccessSegments implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            used: (property_exists($data, "used") ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
+            used: (property_exists($data, "used") && $data->used !== null ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
             limit: (property_exists($data, "limit") ? ($data->limit === null ? null : SdkClient::intValue($data->limit)) : SdkNotGiven::Value),
         );
     }
@@ -119,7 +119,7 @@ class GetUsageResponseSuccessBroadcasts implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            used: (property_exists($data, "used") ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
+            used: (property_exists($data, "used") && $data->used !== null ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
             limit: (property_exists($data, "limit") ? $data->limit : SdkNotGiven::Value),
         );
     }
@@ -190,7 +190,7 @@ class GetUsageResponseSuccessAiCredits implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            used: (property_exists($data, "used") ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
+            used: (property_exists($data, "used") && $data->used !== null ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
             limit: (property_exists($data, "limit") ? ($data->limit === null ? null : SdkClient::intValue($data->limit)) : SdkNotGiven::Value),
             nextIncreaseAt: (property_exists($data, "next_increase_at") ? ($data->next_increase_at === null ? null : SdkClient::stringValue($data->next_increase_at)) : SdkNotGiven::Value),
         );
@@ -262,9 +262,9 @@ class GetUsageResponseSuccessAutomationRuns implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            used: (property_exists($data, "used") ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
-            limit: (property_exists($data, "limit") ? SdkClient::intValue($data->limit) : SdkNotGiven::Value),
-            resetsAt: (property_exists($data, "resets_at") ? SdkClient::stringValue($data->resets_at) : SdkNotGiven::Value),
+            used: (property_exists($data, "used") && $data->used !== null ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
+            limit: (property_exists($data, "limit") && $data->limit !== null ? SdkClient::intValue($data->limit) : SdkNotGiven::Value),
+            resetsAt: (property_exists($data, "resets_at") && $data->resets_at !== null ? SdkClient::stringValue($data->resets_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -322,7 +322,7 @@ class GetUsageResponseSuccessDomains implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            used: (property_exists($data, "used") ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
+            used: (property_exists($data, "used") && $data->used !== null ? SdkClient::intValue($data->used) : SdkNotGiven::Value),
             limit: (property_exists($data, "limit") ? ($data->limit === null ? null : SdkClient::intValue($data->limit)) : SdkNotGiven::Value),
         );
     }

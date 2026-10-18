@@ -108,12 +108,12 @@ class ListReceivedEmailsResponseDataItemAttachmentsItem implements \JsonSerializ
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
             filename: (property_exists($data, "filename") ? ($data->filename === null ? null : SdkClient::stringValue($data->filename)) : SdkNotGiven::Value),
-            contentType: (property_exists($data, "content_type") ? SdkClient::stringValue($data->content_type) : SdkNotGiven::Value),
-            contentId: (property_exists($data, "content_id") ? SdkClient::stringValue($data->content_id) : SdkNotGiven::Value),
+            contentType: (property_exists($data, "content_type") && $data->content_type !== null ? SdkClient::stringValue($data->content_type) : SdkNotGiven::Value),
+            contentId: (property_exists($data, "content_id") && $data->content_id !== null ? SdkClient::stringValue($data->content_id) : SdkNotGiven::Value),
             contentDisposition: (property_exists($data, "content_disposition") ? ($data->content_disposition === null ? null : SdkClient::hydrateStringEnumOrString($data->content_disposition, ListReceivedEmailsResponseDataItemAttachmentsItemContentDispositionEnum::class)) : SdkNotGiven::Value),
-            size: (property_exists($data, "size") ? SdkClient::intValue($data->size) : SdkNotGiven::Value),
+            size: (property_exists($data, "size") && $data->size !== null ? SdkClient::intValue($data->size) : SdkNotGiven::Value),
         );
     }
 }
@@ -267,16 +267,16 @@ class ListReceivedEmailsResponseDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            to: (property_exists($data, "to") ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkNotGiven::Value),
-            from: (property_exists($data, "from") ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            to: (property_exists($data, "to") && $data->to !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkNotGiven::Value),
+            from: (property_exists($data, "from") && $data->from !== null ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
             subject: (property_exists($data, "subject") ? ($data->subject === null ? null : SdkClient::stringValue($data->subject)) : SdkNotGiven::Value),
-            messageId: (property_exists($data, "message_id") ? SdkClient::stringValue($data->message_id) : SdkNotGiven::Value),
+            messageId: (property_exists($data, "message_id") && $data->message_id !== null ? SdkClient::stringValue($data->message_id) : SdkNotGiven::Value),
             bcc: (property_exists($data, "bcc") ? ($data->bcc === null ? null : array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc)))) : SdkNotGiven::Value),
             cc: (property_exists($data, "cc") ? ($data->cc === null ? null : array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc)))) : SdkNotGiven::Value),
             replyTo: (property_exists($data, "reply_to") ? ($data->reply_to === null ? null : array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->reply_to)))) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            attachments: (property_exists($data, "attachments") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListReceivedEmailsResponseDataItemAttachmentsItem::class), SdkClient::arrayValue($data->attachments))) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            attachments: (property_exists($data, "attachments") && $data->attachments !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListReceivedEmailsResponseDataItemAttachmentsItem::class), SdkClient::arrayValue($data->attachments))) : SdkNotGiven::Value),
         );
     }
 }
@@ -346,9 +346,9 @@ class ListReceivedEmailsResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            hasMore: (property_exists($data, "has_more") ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
-            data: (property_exists($data, "data") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListReceivedEmailsResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            hasMore: (property_exists($data, "has_more") && $data->has_more !== null ? SdkClient::boolValue($data->has_more) : SdkNotGiven::Value),
+            data: (property_exists($data, "data") && $data->data !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ListReceivedEmailsResponseDataItem::class), SdkClient::arrayValue($data->data))) : SdkNotGiven::Value),
         );
     }
 }

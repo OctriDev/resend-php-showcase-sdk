@@ -105,8 +105,8 @@ class CreateSuppressionResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }
@@ -228,12 +228,12 @@ class GetSuppressionResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            email: (property_exists($data, "email") ? SdkClient::stringValue($data->email) : SdkNotGiven::Value),
-            origin: (property_exists($data, "origin") ? SdkClient::hydrateStringEnumOrString($data->origin, GetSuppressionResponseSuccessOriginEnum::class) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            email: (property_exists($data, "email") && $data->email !== null ? SdkClient::stringValue($data->email) : SdkNotGiven::Value),
+            origin: (property_exists($data, "origin") && $data->origin !== null ? SdkClient::hydrateStringEnumOrString($data->origin, GetSuppressionResponseSuccessOriginEnum::class) : SdkNotGiven::Value),
             sourceId: (property_exists($data, "source_id") ? ($data->source_id === null ? null : SdkClient::stringValue($data->source_id)) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -343,11 +343,11 @@ class ListSuppressionsResponseSuccessDataItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            email: (property_exists($data, "email") ? SdkClient::stringValue($data->email) : SdkNotGiven::Value),
-            origin: (property_exists($data, "origin") ? SdkClient::hydrateStringEnumOrString($data->origin, ListSuppressionsResponseSuccessDataItemOriginEnum::class) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            email: (property_exists($data, "email") && $data->email !== null ? SdkClient::stringValue($data->email) : SdkNotGiven::Value),
+            origin: (property_exists($data, "origin") && $data->origin !== null ? SdkClient::hydrateStringEnumOrString($data->origin, ListSuppressionsResponseSuccessDataItemOriginEnum::class) : SdkNotGiven::Value),
             sourceId: (property_exists($data, "source_id") ? ($data->source_id === null ? null : SdkClient::stringValue($data->source_id)) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
         );
     }
 }

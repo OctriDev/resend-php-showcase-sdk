@@ -132,13 +132,13 @@ class CreateContactOptions implements \JsonSerializable
         if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
         return new self(
             email: SdkClient::stringValue($data->email),
-            firstName: (property_exists($data, "first_name") ? SdkClient::stringValue($data->first_name) : SdkNotGiven::Value),
-            lastName: (property_exists($data, "last_name") ? SdkClient::stringValue($data->last_name) : SdkNotGiven::Value),
-            unsubscribed: (property_exists($data, "unsubscribed") ? SdkClient::boolValue($data->unsubscribed) : SdkNotGiven::Value),
-            properties: (property_exists($data, "properties") ? SdkClient::mapValues(SdkClient::stringMapValue($data->properties), static fn($item) => ($item === null ? null : SdkClient::stringValue($item))) : SdkNotGiven::Value),
-            segments: (property_exists($data, "segments") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CreateContactOptionsSegmentsItem::class), SdkClient::arrayValue($data->segments))) : SdkNotGiven::Value),
-            topics: (property_exists($data, "topics") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CreateContactOptionsTopicsItem::class), SdkClient::arrayValue($data->topics))) : SdkNotGiven::Value),
-            audienceId: (property_exists($data, "audience_id") ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
+            firstName: (property_exists($data, "first_name") && $data->first_name !== null ? SdkClient::stringValue($data->first_name) : SdkNotGiven::Value),
+            lastName: (property_exists($data, "last_name") && $data->last_name !== null ? SdkClient::stringValue($data->last_name) : SdkNotGiven::Value),
+            unsubscribed: (property_exists($data, "unsubscribed") && $data->unsubscribed !== null ? SdkClient::boolValue($data->unsubscribed) : SdkNotGiven::Value),
+            properties: (property_exists($data, "properties") && $data->properties !== null ? SdkClient::mapValues(SdkClient::stringMapValue($data->properties), static fn($item) => ($item === null ? null : SdkClient::stringValue($item))) : SdkNotGiven::Value),
+            segments: (property_exists($data, "segments") && $data->segments !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CreateContactOptionsSegmentsItem::class), SdkClient::arrayValue($data->segments))) : SdkNotGiven::Value),
+            topics: (property_exists($data, "topics") && $data->topics !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CreateContactOptionsTopicsItem::class), SdkClient::arrayValue($data->topics))) : SdkNotGiven::Value),
+            audienceId: (property_exists($data, "audience_id") && $data->audience_id !== null ? SdkClient::stringValue($data->audience_id) : SdkNotGiven::Value),
         );
     }
 }
@@ -196,8 +196,8 @@ class CreateContactResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
         );
     }
 }
@@ -320,12 +320,12 @@ class GetContactImportResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, GetContactImportResponseSuccessStatusEnum::class) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, GetContactImportResponseSuccessStatusEnum::class) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
             completedAt: (property_exists($data, "completed_at") ? ($data->completed_at === null ? null : SdkClient::stringValue($data->completed_at)) : SdkNotGiven::Value),
-            counts: (property_exists($data, "counts") ? SdkClient::hydrateClass($data->counts, ContactImportCounts::class) : SdkNotGiven::Value),
+            counts: (property_exists($data, "counts") && $data->counts !== null ? SdkClient::hydrateClass($data->counts, ContactImportCounts::class) : SdkNotGiven::Value),
         );
     }
 }

@@ -60,8 +60,8 @@ class GetUsageResponseSuccessRateLimit implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            limit: (property_exists($data, "limit") ? SdkClient::intValue($data->limit) : SdkNotGiven::Value),
-            duration: (property_exists($data, "duration") ? SdkClient::stringValue($data->duration) : SdkNotGiven::Value),
+            limit: (property_exists($data, "limit") && $data->limit !== null ? SdkClient::intValue($data->limit) : SdkNotGiven::Value),
+            duration: (property_exists($data, "duration") && $data->duration !== null ? SdkClient::stringValue($data->duration) : SdkNotGiven::Value),
         );
     }
 }
@@ -203,15 +203,15 @@ class GetUsageResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            emails: (property_exists($data, "emails") ? SdkClient::hydrateClass($data->emails, GetUsageResponseSuccessEmails::class) : SdkNotGiven::Value),
-            contacts: (property_exists($data, "contacts") ? SdkClient::hydrateClass($data->contacts, GetUsageResponseSuccessContacts::class) : SdkNotGiven::Value),
-            segments: (property_exists($data, "segments") ? SdkClient::hydrateClass($data->segments, GetUsageResponseSuccessSegments::class) : SdkNotGiven::Value),
-            broadcasts: (property_exists($data, "broadcasts") ? SdkClient::hydrateClass($data->broadcasts, GetUsageResponseSuccessBroadcasts::class) : SdkNotGiven::Value),
-            aiCredits: (property_exists($data, "ai_credits") ? SdkClient::hydrateClass($data->ai_credits, GetUsageResponseSuccessAiCredits::class) : SdkNotGiven::Value),
-            automationRuns: (property_exists($data, "automation_runs") ? SdkClient::hydrateClass($data->automation_runs, GetUsageResponseSuccessAutomationRuns::class) : SdkNotGiven::Value),
-            domains: (property_exists($data, "domains") ? SdkClient::hydrateClass($data->domains, GetUsageResponseSuccessDomains::class) : SdkNotGiven::Value),
-            rateLimit: (property_exists($data, "rate_limit") ? SdkClient::hydrateClass($data->rate_limit, GetUsageResponseSuccessRateLimit::class) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            emails: (property_exists($data, "emails") && $data->emails !== null ? SdkClient::hydrateClass($data->emails, GetUsageResponseSuccessEmails::class) : SdkNotGiven::Value),
+            contacts: (property_exists($data, "contacts") && $data->contacts !== null ? SdkClient::hydrateClass($data->contacts, GetUsageResponseSuccessContacts::class) : SdkNotGiven::Value),
+            segments: (property_exists($data, "segments") && $data->segments !== null ? SdkClient::hydrateClass($data->segments, GetUsageResponseSuccessSegments::class) : SdkNotGiven::Value),
+            broadcasts: (property_exists($data, "broadcasts") && $data->broadcasts !== null ? SdkClient::hydrateClass($data->broadcasts, GetUsageResponseSuccessBroadcasts::class) : SdkNotGiven::Value),
+            aiCredits: (property_exists($data, "ai_credits") && $data->ai_credits !== null ? SdkClient::hydrateClass($data->ai_credits, GetUsageResponseSuccessAiCredits::class) : SdkNotGiven::Value),
+            automationRuns: (property_exists($data, "automation_runs") && $data->automation_runs !== null ? SdkClient::hydrateClass($data->automation_runs, GetUsageResponseSuccessAutomationRuns::class) : SdkNotGiven::Value),
+            domains: (property_exists($data, "domains") && $data->domains !== null ? SdkClient::hydrateClass($data->domains, GetUsageResponseSuccessDomains::class) : SdkNotGiven::Value),
+            rateLimit: (property_exists($data, "rate_limit") && $data->rate_limit !== null ? SdkClient::hydrateClass($data->rate_limit, GetUsageResponseSuccessRateLimit::class) : SdkNotGiven::Value),
         );
     }
 }

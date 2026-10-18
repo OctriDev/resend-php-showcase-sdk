@@ -114,8 +114,8 @@ class CreateTopicOptions implements \JsonSerializable
         return new self(
             name: SdkClient::stringValue($data->name),
             defaultSubscription: SdkClient::hydrateStringEnumOrString($data->default_subscription, CreateTopicOptionsDefaultSubscriptionEnum::class),
-            description: (property_exists($data, "description") ? SdkClient::stringValue($data->description) : SdkNotGiven::Value),
-            visibility: (property_exists($data, "visibility") ? SdkClient::hydrateStringEnumOrString($data->visibility, CreateTopicOptionsVisibilityEnum::class) : SdkNotGiven::Value),
+            description: (property_exists($data, "description") && $data->description !== null ? SdkClient::stringValue($data->description) : SdkNotGiven::Value),
+            visibility: (property_exists($data, "visibility") && $data->visibility !== null ? SdkClient::hydrateStringEnumOrString($data->visibility, CreateTopicOptionsVisibilityEnum::class) : SdkNotGiven::Value),
         );
     }
 }
@@ -173,8 +173,8 @@ class CreateTopicResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
         );
     }
 }
@@ -322,13 +322,13 @@ class GetTopicResponseSuccess implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            description: (property_exists($data, "description") ? SdkClient::stringValue($data->description) : SdkNotGiven::Value),
-            defaultSubscription: (property_exists($data, "default_subscription") ? SdkClient::hydrateStringEnumOrString($data->default_subscription, GetTopicResponseSuccessDefaultSubscriptionEnum::class) : SdkNotGiven::Value),
-            visibility: (property_exists($data, "visibility") ? SdkClient::hydrateStringEnumOrString($data->visibility, GetTopicResponseSuccessVisibilityEnum::class) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            description: (property_exists($data, "description") && $data->description !== null ? SdkClient::stringValue($data->description) : SdkNotGiven::Value),
+            defaultSubscription: (property_exists($data, "default_subscription") && $data->default_subscription !== null ? SdkClient::hydrateStringEnumOrString($data->default_subscription, GetTopicResponseSuccessDefaultSubscriptionEnum::class) : SdkNotGiven::Value),
+            visibility: (property_exists($data, "visibility") && $data->visibility !== null ? SdkClient::hydrateStringEnumOrString($data->visibility, GetTopicResponseSuccessVisibilityEnum::class) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
         );
     }
 }

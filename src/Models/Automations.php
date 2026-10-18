@@ -147,14 +147,14 @@ class Automation implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, AutomationStatusEnum::class) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            updatedAt: (property_exists($data, "updated_at") ? SdkClient::stringValue($data->updated_at) : SdkNotGiven::Value),
-            steps: (property_exists($data, "steps") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AutomationStepResponse::class), SdkClient::arrayValue($data->steps))) : SdkNotGiven::Value),
-            connections: (property_exists($data, "connections") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AutomationConnection::class), SdkClient::arrayValue($data->connections))) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, AutomationStatusEnum::class) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            updatedAt: (property_exists($data, "updated_at") && $data->updated_at !== null ? SdkClient::stringValue($data->updated_at) : SdkNotGiven::Value),
+            steps: (property_exists($data, "steps") && $data->steps !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AutomationStepResponse::class), SdkClient::arrayValue($data->steps))) : SdkNotGiven::Value),
+            connections: (property_exists($data, "connections") && $data->connections !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AutomationConnection::class), SdkClient::arrayValue($data->connections))) : SdkNotGiven::Value),
         );
     }
 }
@@ -242,7 +242,7 @@ class AutomationConnection implements \JsonSerializable
         return new self(
             from: SdkClient::stringValue($data->from),
             to: SdkClient::stringValue($data->to),
-            type: (property_exists($data, "type") ? SdkClient::hydrateStringEnumOrString($data->type, AutomationConnectionTypeEnum::class) : SdkNotGiven::Value),
+            type: (property_exists($data, "type") && $data->type !== null ? SdkClient::hydrateStringEnumOrString($data->type, AutomationConnectionTypeEnum::class) : SdkNotGiven::Value),
         );
     }
 }

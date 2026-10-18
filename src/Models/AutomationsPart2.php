@@ -96,11 +96,11 @@ class AutomationListItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, AutomationListItemStatusEnum::class) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            updatedAt: (property_exists($data, "updated_at") ? SdkClient::stringValue($data->updated_at) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, AutomationListItemStatusEnum::class) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            updatedAt: (property_exists($data, "updated_at") && $data->updated_at !== null ? SdkClient::stringValue($data->updated_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -235,13 +235,13 @@ class AutomationRun implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            object_: (property_exists($data, "object") ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, AutomationRunStatusEnum::class) : SdkNotGiven::Value),
+            object_: (property_exists($data, "object") && $data->object !== null ? SdkClient::stringValue($data->object) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, AutomationRunStatusEnum::class) : SdkNotGiven::Value),
             startedAt: (property_exists($data, "started_at") ? ($data->started_at === null ? null : SdkClient::stringValue($data->started_at)) : SdkNotGiven::Value),
             completedAt: (property_exists($data, "completed_at") ? ($data->completed_at === null ? null : SdkClient::stringValue($data->completed_at)) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
-            steps: (property_exists($data, "steps") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AutomationRunStep::class), SdkClient::arrayValue($data->steps))) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            steps: (property_exists($data, "steps") && $data->steps !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AutomationRunStep::class), SdkClient::arrayValue($data->steps))) : SdkNotGiven::Value),
         );
     }
 }

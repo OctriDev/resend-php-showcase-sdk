@@ -96,11 +96,11 @@ class AutomationRunListItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            id: (property_exists($data, "id") ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, AutomationRunListItemStatusEnum::class) : SdkNotGiven::Value),
+            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, AutomationRunListItemStatusEnum::class) : SdkNotGiven::Value),
             startedAt: (property_exists($data, "started_at") ? ($data->started_at === null ? null : SdkClient::stringValue($data->started_at)) : SdkNotGiven::Value),
             completedAt: (property_exists($data, "completed_at") ? ($data->completed_at === null ? null : SdkClient::stringValue($data->completed_at)) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
         );
     }
 }
@@ -251,14 +251,14 @@ class AutomationRunStep implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            key: (property_exists($data, "key") ? SdkClient::stringValue($data->key) : SdkNotGiven::Value),
-            type: (property_exists($data, "type") ? SdkClient::hydrateStringEnumOrString($data->type, AutomationRunStepTypeEnum::class) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::stringValue($data->status) : SdkNotGiven::Value),
+            key: (property_exists($data, "key") && $data->key !== null ? SdkClient::stringValue($data->key) : SdkNotGiven::Value),
+            type: (property_exists($data, "type") && $data->type !== null ? SdkClient::hydrateStringEnumOrString($data->type, AutomationRunStepTypeEnum::class) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::stringValue($data->status) : SdkNotGiven::Value),
             startedAt: (property_exists($data, "started_at") ? ($data->started_at === null ? null : SdkClient::stringValue($data->started_at)) : SdkNotGiven::Value),
             completedAt: (property_exists($data, "completed_at") ? ($data->completed_at === null ? null : SdkClient::stringValue($data->completed_at)) : SdkNotGiven::Value),
             output: (property_exists($data, "output") ? ($data->output === null ? null : SdkClient::stringMapValue($data->output)) : SdkNotGiven::Value),
             error: (property_exists($data, "error") ? ($data->error === null ? null : SdkClient::stringMapValue($data->error)) : SdkNotGiven::Value),
-            createdAt: (property_exists($data, "created_at") ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
         );
     }
 }
