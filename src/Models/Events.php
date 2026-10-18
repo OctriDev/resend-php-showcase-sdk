@@ -57,9 +57,7 @@ class CreateEventRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             schema: (property_exists($data, "schema") ? ($data->schema === null ? null : SdkClient::stringMapValue($data->schema)) : SdkNotGiven::Value),

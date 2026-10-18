@@ -176,12 +176,8 @@ class InboxThreadSearchResultVariant1 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "matched_email_id")) {
-            throw new SdkValidationError("matched_email_id", 'required', "Missing required property 'matched_email_id'");
-        }
-        if (!property_exists($data, "highlights") || $data->highlights === null) {
-            throw new SdkValidationError("highlights", 'required', "Required property 'highlights' is missing or null");
-        }
+        if (!property_exists($data, "matched_email_id")) { throw new SdkValidationError("matched_email_id", 'required', "Missing required property 'matched_email_id'"); }
+        if (!property_exists($data, "highlights") || $data->highlights === null) { throw new SdkValidationError("highlights", 'required', "Required property 'highlights' is missing or null"); }
         return new self(
             matchedEmailId: ($data->matched_email_id === null ? null : SdkClient::stringValue($data->matched_email_id)),
             highlights: SdkClient::hydrateClass($data->highlights, InboxThreadSearchResultVariant1Highlights::class),
@@ -200,26 +196,11 @@ final readonly class InboxThreadSearchResultFolderEnum implements SdkOpenEnum
     public const SENT = "sent";
     public const TRASH = "trash";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**

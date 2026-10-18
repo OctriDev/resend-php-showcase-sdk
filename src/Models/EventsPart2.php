@@ -225,9 +225,7 @@ class SendEventRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "event") || $data->event === null) {
-            throw new SdkValidationError("event", 'required', "Required property 'event' is missing or null");
-        }
+        if (!property_exists($data, "event") || $data->event === null) { throw new SdkValidationError("event", 'required', "Required property 'event' is missing or null"); }
         return new self(
             event: SdkClient::stringValue($data->event),
             contactId: (property_exists($data, "contact_id") && $data->contact_id !== null ? SdkClient::stringValue($data->contact_id) : SdkNotGiven::Value),
@@ -334,9 +332,7 @@ class UpdateEventRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "schema")) {
-            throw new SdkValidationError("schema", 'required', "Missing required property 'schema'");
-        }
+        if (!property_exists($data, "schema")) { throw new SdkValidationError("schema", 'required', "Missing required property 'schema'"); }
         return new self(
             schema: ($data->schema === null ? null : SdkClient::stringMapValue($data->schema)),
         );

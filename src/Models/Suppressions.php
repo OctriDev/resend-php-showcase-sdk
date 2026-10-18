@@ -45,9 +45,7 @@ class BatchAddSuppressionsOptions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "emails") || $data->emails === null) {
-            throw new SdkValidationError("emails", 'required', "Required property 'emails' is missing or null");
-        }
+        if (!property_exists($data, "emails") || $data->emails === null) { throw new SdkValidationError("emails", 'required', "Required property 'emails' is missing or null"); }
         return new self(
             emails: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->emails))),
         );
