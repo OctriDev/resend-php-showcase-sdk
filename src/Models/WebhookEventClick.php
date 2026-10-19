@@ -75,18 +75,10 @@ class WebhookEventClick implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ipAddress") || $data->ipAddress === null) {
-            throw new SdkValidationError("ipAddress", 'required', "Required property 'ipAddress' is missing or null");
-        }
-        if (!property_exists($data, "link") || $data->link === null) {
-            throw new SdkValidationError("link", 'required', "Required property 'link' is missing or null");
-        }
-        if (!property_exists($data, "timestamp") || $data->timestamp === null) {
-            throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null");
-        }
-        if (!property_exists($data, "userAgent") || $data->userAgent === null) {
-            throw new SdkValidationError("userAgent", 'required', "Required property 'userAgent' is missing or null");
-        }
+        if (!property_exists($data, "ipAddress") || $data->ipAddress === null) { throw new SdkValidationError("ipAddress", 'required', "Required property 'ipAddress' is missing or null"); }
+        if (!property_exists($data, "link") || $data->link === null) { throw new SdkValidationError("link", 'required', "Required property 'link' is missing or null"); }
+        if (!property_exists($data, "timestamp") || $data->timestamp === null) { throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null"); }
+        if (!property_exists($data, "userAgent") || $data->userAgent === null) { throw new SdkValidationError("userAgent", 'required', "Required property 'userAgent' is missing or null"); }
         return new self(
             ipAddress: SdkClient::stringValue($data->ipAddress),
             link: SdkClient::stringValue($data->link),

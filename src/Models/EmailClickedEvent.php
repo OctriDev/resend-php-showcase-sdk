@@ -66,15 +66,9 @@ class EmailClickedEvent implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "data") || $data->data === null) {
-            throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "data") || $data->data === null) { throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null"); }
         Validation::validateConst("type", $data->type, "email.clicked");
         return new self(
             type: SdkClient::stringValue($data->type),
@@ -119,9 +113,7 @@ class EmailClickedEventDataVariant1 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "click") || $data->click === null) {
-            throw new SdkValidationError("click", 'required', "Required property 'click' is missing or null");
-        }
+        if (!property_exists($data, "click") || $data->click === null) { throw new SdkValidationError("click", 'required', "Required property 'click' is missing or null"); }
         return new self(
             click: SdkClient::hydrateClass($data->click, WebhookEventClick::class),
         );
@@ -176,12 +168,8 @@ class EmailClickedEventDataHeadersItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "value") || $data->value === null) {
-            throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "value") || $data->value === null) { throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             value: SdkClient::stringValue($data->value),
@@ -325,24 +313,12 @@ class EmailClickedEventData implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "email_id") || $data->email_id === null) {
-            throw new SdkValidationError("email_id", 'required', "Required property 'email_id' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "from") || $data->from === null) {
-            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
-        }
-        if (!property_exists($data, "to") || $data->to === null) {
-            throw new SdkValidationError("to", 'required', "Required property 'to' is missing or null");
-        }
-        if (!property_exists($data, "subject") || $data->subject === null) {
-            throw new SdkValidationError("subject", 'required', "Required property 'subject' is missing or null");
-        }
-        if (!property_exists($data, "click") || $data->click === null) {
-            throw new SdkValidationError("click", 'required', "Required property 'click' is missing or null");
-        }
+        if (!property_exists($data, "email_id") || $data->email_id === null) { throw new SdkValidationError("email_id", 'required', "Required property 'email_id' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "to") || $data->to === null) { throw new SdkValidationError("to", 'required', "Required property 'to' is missing or null"); }
+        if (!property_exists($data, "subject") || $data->subject === null) { throw new SdkValidationError("subject", 'required', "Required property 'subject' is missing or null"); }
+        if (!property_exists($data, "click") || $data->click === null) { throw new SdkValidationError("click", 'required', "Required property 'click' is missing or null"); }
         return new self(
             emailId: SdkClient::stringValue($data->email_id),
             createdAt: SdkClient::stringValue($data->created_at),

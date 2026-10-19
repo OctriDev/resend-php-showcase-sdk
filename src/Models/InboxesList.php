@@ -65,15 +65,9 @@ class ListInboxDraftsResponseSuccess implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "object") || $data->object === null) {
-            throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null");
-        }
-        if (!property_exists($data, "has_more") || $data->has_more === null) {
-            throw new SdkValidationError("has_more", 'required', "Required property 'has_more' is missing or null");
-        }
-        if (!property_exists($data, "data") || $data->data === null) {
-            throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null");
-        }
+        if (!property_exists($data, "object") || $data->object === null) { throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null"); }
+        if (!property_exists($data, "has_more") || $data->has_more === null) { throw new SdkValidationError("has_more", 'required', "Required property 'has_more' is missing or null"); }
+        if (!property_exists($data, "data") || $data->data === null) { throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null"); }
         return new self(
             object_: SdkClient::stringValue($data->object),
             hasMore: SdkClient::boolValue($data->has_more),
@@ -170,24 +164,12 @@ class ListInboxesResponseSuccessDataItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name")) {
-            throw new SdkValidationError("name", 'required', "Missing required property 'name'");
-        }
-        if (!property_exists($data, "email_address") || $data->email_address === null) {
-            throw new SdkValidationError("email_address", 'required', "Required property 'email_address' is missing or null");
-        }
-        if (!property_exists($data, "from_name")) {
-            throw new SdkValidationError("from_name", 'required', "Missing required property 'from_name'");
-        }
-        if (!property_exists($data, "unread") || $data->unread === null) {
-            throw new SdkValidationError("unread", 'required', "Required property 'unread' is missing or null");
-        }
-        if (!property_exists($data, "last_received")) {
-            throw new SdkValidationError("last_received", 'required', "Missing required property 'last_received'");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name")) { throw new SdkValidationError("name", 'required', "Missing required property 'name'"); }
+        if (!property_exists($data, "email_address") || $data->email_address === null) { throw new SdkValidationError("email_address", 'required', "Required property 'email_address' is missing or null"); }
+        if (!property_exists($data, "from_name")) { throw new SdkValidationError("from_name", 'required', "Missing required property 'from_name'"); }
+        if (!property_exists($data, "unread") || $data->unread === null) { throw new SdkValidationError("unread", 'required', "Required property 'unread' is missing or null"); }
+        if (!property_exists($data, "last_received")) { throw new SdkValidationError("last_received", 'required', "Missing required property 'last_received'"); }
         return new self(
             id: SdkClient::stringValue($data->id),
             name: ($data->name === null ? null : SdkClient::stringValue($data->name)),
@@ -257,15 +239,9 @@ class ListInboxesResponseSuccess implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "object") || $data->object === null) {
-            throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null");
-        }
-        if (!property_exists($data, "has_more") || $data->has_more === null) {
-            throw new SdkValidationError("has_more", 'required', "Required property 'has_more' is missing or null");
-        }
-        if (!property_exists($data, "data") || $data->data === null) {
-            throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null");
-        }
+        if (!property_exists($data, "object") || $data->object === null) { throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null"); }
+        if (!property_exists($data, "has_more") || $data->has_more === null) { throw new SdkValidationError("has_more", 'required', "Required property 'has_more' is missing or null"); }
+        if (!property_exists($data, "data") || $data->data === null) { throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null"); }
         return new self(
             object_: SdkClient::stringValue($data->object),
             hasMore: SdkClient::boolValue($data->has_more),
@@ -322,12 +298,8 @@ class ListInboxLabelsResponseSuccess implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "object") || $data->object === null) {
-            throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null");
-        }
-        if (!property_exists($data, "data") || $data->data === null) {
-            throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null");
-        }
+        if (!property_exists($data, "object") || $data->object === null) { throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null"); }
+        if (!property_exists($data, "data") || $data->data === null) { throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null"); }
         return new self(
             object_: SdkClient::stringValue($data->object),
             data: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, InboxLabel::class), SdkClient::arrayValue($data->data))),

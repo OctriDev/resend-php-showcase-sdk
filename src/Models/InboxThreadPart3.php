@@ -66,15 +66,9 @@ class InboxThreadLabelsUpdatedEvent implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "data") || $data->data === null) {
-            throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "data") || $data->data === null) { throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null"); }
         Validation::validateConst("type", $data->type, "inbox.thread.labels.updated");
         return new self(
             type: SdkClient::stringValue($data->type),
@@ -174,21 +168,11 @@ class InboxThreadLabelsUpdatedEventData implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "added") || $data->added === null) {
-            throw new SdkValidationError("added", 'required', "Required property 'added' is missing or null");
-        }
-        if (!property_exists($data, "removed") || $data->removed === null) {
-            throw new SdkValidationError("removed", 'required', "Required property 'removed' is missing or null");
-        }
-        if (!property_exists($data, "source") || $data->source === null) {
-            throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null");
-        }
-        if (!property_exists($data, "inbox_id") || $data->inbox_id === null) {
-            throw new SdkValidationError("inbox_id", 'required', "Required property 'inbox_id' is missing or null");
-        }
-        if (!property_exists($data, "thread_id") || $data->thread_id === null) {
-            throw new SdkValidationError("thread_id", 'required', "Required property 'thread_id' is missing or null");
-        }
+        if (!property_exists($data, "added") || $data->added === null) { throw new SdkValidationError("added", 'required', "Required property 'added' is missing or null"); }
+        if (!property_exists($data, "removed") || $data->removed === null) { throw new SdkValidationError("removed", 'required', "Required property 'removed' is missing or null"); }
+        if (!property_exists($data, "source") || $data->source === null) { throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null"); }
+        if (!property_exists($data, "inbox_id") || $data->inbox_id === null) { throw new SdkValidationError("inbox_id", 'required', "Required property 'inbox_id' is missing or null"); }
+        if (!property_exists($data, "thread_id") || $data->thread_id === null) { throw new SdkValidationError("thread_id", 'required', "Required property 'thread_id' is missing or null"); }
         return new self(
             added: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, InboxThreadLabel::class), SdkClient::arrayValue($data->added))),
             removed: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, InboxThreadLabel::class), SdkClient::arrayValue($data->removed))),
@@ -259,15 +243,9 @@ class InboxThreadUnassignedEvent implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "data") || $data->data === null) {
-            throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "data") || $data->data === null) { throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null"); }
         Validation::validateConst("type", $data->type, "inbox.thread.unassigned");
         return new self(
             type: SdkClient::stringValue($data->type),
@@ -357,18 +335,10 @@ class InboxThreadUnassignedEventData implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "previous_assignee_email")) {
-            throw new SdkValidationError("previous_assignee_email", 'required', "Missing required property 'previous_assignee_email'");
-        }
-        if (!property_exists($data, "source") || $data->source === null) {
-            throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null");
-        }
-        if (!property_exists($data, "inbox_id") || $data->inbox_id === null) {
-            throw new SdkValidationError("inbox_id", 'required', "Required property 'inbox_id' is missing or null");
-        }
-        if (!property_exists($data, "thread_id") || $data->thread_id === null) {
-            throw new SdkValidationError("thread_id", 'required', "Required property 'thread_id' is missing or null");
-        }
+        if (!property_exists($data, "previous_assignee_email")) { throw new SdkValidationError("previous_assignee_email", 'required', "Missing required property 'previous_assignee_email'"); }
+        if (!property_exists($data, "source") || $data->source === null) { throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null"); }
+        if (!property_exists($data, "inbox_id") || $data->inbox_id === null) { throw new SdkValidationError("inbox_id", 'required', "Required property 'inbox_id' is missing or null"); }
+        if (!property_exists($data, "thread_id") || $data->thread_id === null) { throw new SdkValidationError("thread_id", 'required', "Required property 'thread_id' is missing or null"); }
         return new self(
             previousAssigneeEmail: ($data->previous_assignee_email === null ? null : SdkClient::stringValue($data->previous_assignee_email)),
             source: SdkClient::hydrateStringEnumOrString($data->source, InboxEventSource::class),
