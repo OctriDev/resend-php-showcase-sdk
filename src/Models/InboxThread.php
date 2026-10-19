@@ -66,9 +66,15 @@ class InboxThreadAssignedEvent implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "data") || $data->data === null) { throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "data") || $data->data === null) {
+            throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null");
+        }
         Validation::validateConst("type", $data->type, "inbox.thread.assigned");
         return new self(
             type: SdkClient::stringValue($data->type),
@@ -178,12 +184,24 @@ class InboxThreadAssignedEventData implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "assignee_email")) { throw new SdkValidationError("assignee_email", 'required', "Missing required property 'assignee_email'"); }
-        if (!property_exists($data, "assigned_by_email")) { throw new SdkValidationError("assigned_by_email", 'required', "Missing required property 'assigned_by_email'"); }
-        if (!property_exists($data, "previous_assignee_email")) { throw new SdkValidationError("previous_assignee_email", 'required', "Missing required property 'previous_assignee_email'"); }
-        if (!property_exists($data, "source") || $data->source === null) { throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null"); }
-        if (!property_exists($data, "inbox_id") || $data->inbox_id === null) { throw new SdkValidationError("inbox_id", 'required', "Required property 'inbox_id' is missing or null"); }
-        if (!property_exists($data, "thread_id") || $data->thread_id === null) { throw new SdkValidationError("thread_id", 'required', "Required property 'thread_id' is missing or null"); }
+        if (!property_exists($data, "assignee_email")) {
+            throw new SdkValidationError("assignee_email", 'required', "Missing required property 'assignee_email'");
+        }
+        if (!property_exists($data, "assigned_by_email")) {
+            throw new SdkValidationError("assigned_by_email", 'required', "Missing required property 'assigned_by_email'");
+        }
+        if (!property_exists($data, "previous_assignee_email")) {
+            throw new SdkValidationError("previous_assignee_email", 'required', "Missing required property 'previous_assignee_email'");
+        }
+        if (!property_exists($data, "source") || $data->source === null) {
+            throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null");
+        }
+        if (!property_exists($data, "inbox_id") || $data->inbox_id === null) {
+            throw new SdkValidationError("inbox_id", 'required', "Required property 'inbox_id' is missing or null");
+        }
+        if (!property_exists($data, "thread_id") || $data->thread_id === null) {
+            throw new SdkValidationError("thread_id", 'required', "Required property 'thread_id' is missing or null");
+        }
         return new self(
             assigneeEmail: ($data->assignee_email === null ? null : SdkClient::stringValue($data->assignee_email)),
             assignedByEmail: ($data->assigned_by_email === null ? null : SdkClient::stringValue($data->assigned_by_email)),
@@ -255,9 +273,15 @@ class InboxThreadCreatedEvent implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "data") || $data->data === null) { throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "data") || $data->data === null) {
+            throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null");
+        }
         Validation::validateConst("type", $data->type, "inbox.thread.created");
         return new self(
             type: SdkClient::stringValue($data->type),
