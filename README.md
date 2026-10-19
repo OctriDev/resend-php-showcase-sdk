@@ -15,7 +15,7 @@ composer require octridev-resend/sdk:@dev
 
 ## Quickstart
 
-The example calls `$client->domains->get` (GET `/domains/{domain_id}`) with example values for its required arguments.
+The example calls `$client->emails->send` (POST `/emails`) with example values for its required arguments.
 
 ```php
 <?php
@@ -34,7 +34,7 @@ $auth = new ClientAuthConfig();
 $auth->bearerAuth = getenv('API_TOKEN') ?: throw new RuntimeException('API_TOKEN is required');
 $config->auth = $auth;
 $client = new Resend($config);
-$result = $client->domains->get(domainId: "domain-1");
+$result = $client->emails->send(from: "user@example.com", to: "user@example.com", subject: "subject");
 var_dump($result);
 ```
 
