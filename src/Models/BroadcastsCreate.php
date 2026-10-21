@@ -173,9 +173,15 @@ class CreateBroadcastOptions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "segment_id") || $data->segment_id === null) { throw new SdkValidationError("segment_id", 'required', "Required property 'segment_id' is missing or null"); }
-        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
-        if (!property_exists($data, "subject") || $data->subject === null) { throw new SdkValidationError("subject", 'required', "Required property 'subject' is missing or null"); }
+        if (!property_exists($data, "segment_id") || $data->segment_id === null) {
+            throw new SdkValidationError("segment_id", 'required', "Required property 'segment_id' is missing or null");
+        }
+        if (!property_exists($data, "from") || $data->from === null) {
+            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        }
+        if (!property_exists($data, "subject") || $data->subject === null) {
+            throw new SdkValidationError("subject", 'required', "Required property 'subject' is missing or null");
+        }
         return new self(
             segmentId: SdkClient::stringValue($data->segment_id),
             from: SdkClient::stringValue($data->from),
