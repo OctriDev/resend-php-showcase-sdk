@@ -8,79 +8,33 @@ declare(strict_types=1);
 namespace octridev_resend;
 
 /**
- * The tone the agent writes in. Send null to clear the tone.
+ * Provide at least one of `name` or `from_name`.
  */
-final readonly class UpdateInboxAgentOptionsToneEnum implements SdkOpenEnum
-{
-    public const CONCISE_PROFESSIONAL = "concise_professional";
-    public const CONCISE_CASUAL = "concise_casual";
-    public const EXPANDED_PROFESSIONAL = "expanded_professional";
-    public const EXPANDED_CASUAL = "expanded_casual";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Required enumerated value serialized in the `enabled_actions[]` wire field.
- */
-final readonly class UpdateInboxAgentOptionsEnabledActionsItemEnum implements SdkOpenEnum
-{
-    public const DRAFT_REPLY = "draft_reply";
-    public const FORWARD_THREAD = "forward_thread";
-    public const ADD_LABELS = "add_labels";
-    public const ASSIGN_THREAD = "assign_thread";
-    public const MARK_AS_SPAM = "mark_as_spam";
-    public const ARCHIVE_THREAD = "archive_thread";
-    public const DELETE_THREAD = "delete_thread";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * At least one of `instructions`, `tone`, or `enabled_actions` must be provided. Omitted fields keep their current value.
- */
-class UpdateInboxAgentOptions implements \JsonSerializable
+class UpdateInboxOptions implements \JsonSerializable
 {
     /**
-     * Instructions the agent follows when it handles the threads of the inbox. Max 4000 characters. Leading and trailing whitespace is trimmed, and the trimmed value must not be empty. Send null to clear the instructions.
+     * New internal name for the inbox. Recipients do not see it. Between 1 and 64 characters after trimming.
      *
-     * @var string|null|SdkNotGiven
+     * @var string|SdkNotGiven
      */
-    public readonly string|null|SdkNotGiven $instructions;
+    public readonly string|SdkNotGiven $name;
     /**
-     * The tone the agent writes in. Send null to clear the tone.
+     * The name recipients see when mail is sent from this inbox. A plain name, not a `Name <email>` address. Max 78 characters. It cannot contain a colon, `<`, `>`, line breaks, or other control characters. An email address inside the name must be on a domain the team has verified for sending. An empty string removes it.
      *
-     * @var UpdateInboxAgentOptionsToneEnum|string|null|SdkNotGiven
+     * @var string|SdkNotGiven
      */
-    public readonly UpdateInboxAgentOptionsToneEnum|string|null|SdkNotGiven $tone;
-    /**
-     * The actions the agent can take. Replaces the whole set. Duplicates are removed. Send an empty array to disable all actions.
-     *
-     * @var list<UpdateInboxAgentOptionsEnabledActionsItemEnum|string>|SdkNotGiven
-     */
-    public readonly array|SdkNotGiven $enabledActions;
+    public readonly string|SdkNotGiven $fromName;
 
     /**
-     * @param string|null|SdkNotGiven $instructions
-     * @param UpdateInboxAgentOptionsToneEnum|string|null|SdkNotGiven $tone
-     * @param list<UpdateInboxAgentOptionsEnabledActionsItemEnum|string>|SdkNotGiven $enabledActions
+     * @param string|SdkNotGiven $name
+     * @param string|SdkNotGiven $fromName
      */
     public function __construct(
-        string|null|SdkNotGiven $instructions = SdkNotGiven::Value,
-        UpdateInboxAgentOptionsToneEnum|string|null|SdkNotGiven $tone = SdkNotGiven::Value,
-        array|SdkNotGiven $enabledActions = SdkNotGiven::Value,
+        string|SdkNotGiven $name = SdkNotGiven::Value,
+        string|SdkNotGiven $fromName = SdkNotGiven::Value,
     ) {
-        $this->instructions = $instructions;
-        $this->tone = $tone;
-        $this->enabledActions = $enabledActions;
+        $this->name = $name;
+        $this->fromName = $fromName;
     }
 
     /** @return array<array-key, mixed> */
@@ -88,14 +42,11 @@ class UpdateInboxAgentOptions implements \JsonSerializable
     {
         $values = [
         ];
-        if ($this->instructions !== SdkNotGiven::Value) {
-            $values["instructions"] = $this->instructions;
+        if ($this->name !== SdkNotGiven::Value) {
+            $values["name"] = $this->name;
         }
-        if ($this->tone !== SdkNotGiven::Value) {
-            $values["tone"] = $this->tone;
-        }
-        if ($this->enabledActions !== SdkNotGiven::Value) {
-            $values["enabled_actions"] = $this->enabledActions;
+        if ($this->fromName !== SdkNotGiven::Value) {
+            $values["from_name"] = $this->fromName;
         }
         return $values;
     }
@@ -109,26 +60,25 @@ class UpdateInboxAgentOptions implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            instructions: (property_exists($data, "instructions") ? ($data->instructions === null ? null : SdkClient::stringValue($data->instructions)) : SdkNotGiven::Value),
-            tone: (property_exists($data, "tone") ? ($data->tone === null ? null : SdkClient::hydrateStringEnumOrString($data->tone, UpdateInboxAgentOptionsToneEnum::class)) : SdkNotGiven::Value),
-            enabledActions: (property_exists($data, "enabled_actions") && $data->enabled_actions !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateStringEnumOrString($item, UpdateInboxAgentOptionsEnabledActionsItemEnum::class), SdkClient::arrayValue($data->enabled_actions))) : SdkNotGiven::Value),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            fromName: (property_exists($data, "from_name") && $data->from_name !== null ? SdkClient::stringValue($data->from_name) : SdkNotGiven::Value),
         );
     }
 }
 
 /**
- * Typed representation of the `UpdateInboxAgentResponseSuccess` API schema.
+ * Typed representation of the `UpdateInboxResponseSuccess` API schema.
  */
-class UpdateInboxAgentResponseSuccess implements \JsonSerializable
+class UpdateInboxResponseSuccess implements \JsonSerializable
 {
     /**
-     * The object type. Always `inbox_agent`.
+     * The object type.
      *
      * @var string
      */
     public readonly string $object_;
     /**
-     * The ID of the inbox agent.
+     * The ID of the inbox.
      *
      * @var string
      */
@@ -169,130 +119,6 @@ class UpdateInboxAgentResponseSuccess implements \JsonSerializable
         return new self(
             object_: SdkClient::stringValue($data->object),
             id: SdkClient::stringValue($data->id),
-        );
-    }
-}
-
-/**
- * Send at least one of `to`, `cc`, `bcc`, `subject`, `text`, `html` or `attachments`. Omitted fields are left unchanged. Setting `text` or `html` replaces the whole body, so the body part you omit becomes `null`. The merged draft must contain at least one non-empty field, and its combined recipients cannot exceed 50.
- */
-class UpdateInboxDraftOptions implements \JsonSerializable
-{
-    /**
-     * The recipients. For multiple addresses, send an array of strings. Each value can include a friendly name. Pass `null` to clear. Each address is `email@example.com` or `Name <email@example.com>`. An address that is not valid returns a 422.
-     *
-     * @var string|list<string>|null|SdkNotGiven
-     */
-    public readonly string|array|null|SdkNotGiven $to;
-    /**
-     * The CC recipients. Pass `null` or `[]` to clear. Each address is `email@example.com` or `Name <email@example.com>`. An address that is not valid returns a 422.
-     *
-     * @var string|list<string>|null|SdkNotGiven
-     */
-    public readonly string|array|null|SdkNotGiven $cc;
-    /**
-     * The BCC recipients. Pass `null` or `[]` to clear. Each address is `email@example.com` or `Name <email@example.com>`. An address that is not valid returns a 422.
-     *
-     * @var string|list<string>|null|SdkNotGiven
-     */
-    public readonly string|array|null|SdkNotGiven $bcc;
-    /**
-     * The subject. Max 2000 characters. Cannot be only whitespace or contain a line break. Pass `null` to clear.
-     *
-     * @var string|null|SdkNotGiven
-     */
-    public readonly string|null|SdkNotGiven $subject;
-    /**
-     * The HTML body. Pass `null` to clear.
-     *
-     * @var string|null|SdkNotGiven
-     */
-    public readonly string|null|SdkNotGiven $html;
-    /**
-     * The plain text body. Pass `null` to clear.
-     *
-     * @var string|null|SdkNotGiven
-     */
-    public readonly string|null|SdkNotGiven $text;
-    /**
-     * Files to store on the draft. Each one needs `content`, `filename` and `content_type`. A `path` without `content` returns a 422, and when both are sent, `path` is ignored. A `content_id` returns a 422. The files on a draft can total at most 25 MB. An empty file or a blocked file type returns a 422. Sending the field replaces every attachment on the draft. Send `[]` to remove them all. `null` also removes them all.
-     *
-     * @var list<InboxDraftAttachmentInput>|null|SdkNotGiven
-     */
-    public readonly array|null|SdkNotGiven $attachments;
-
-    /**
-     * @param string|list<string>|null|SdkNotGiven $to
-     * @param string|list<string>|null|SdkNotGiven $cc
-     * @param string|list<string>|null|SdkNotGiven $bcc
-     * @param string|null|SdkNotGiven $subject
-     * @param string|null|SdkNotGiven $html
-     * @param string|null|SdkNotGiven $text
-     * @param list<InboxDraftAttachmentInput>|null|SdkNotGiven $attachments
-     */
-    public function __construct(
-        string|array|null|SdkNotGiven $to = SdkNotGiven::Value,
-        string|array|null|SdkNotGiven $cc = SdkNotGiven::Value,
-        string|array|null|SdkNotGiven $bcc = SdkNotGiven::Value,
-        string|null|SdkNotGiven $subject = SdkNotGiven::Value,
-        string|null|SdkNotGiven $html = SdkNotGiven::Value,
-        string|null|SdkNotGiven $text = SdkNotGiven::Value,
-        array|null|SdkNotGiven $attachments = SdkNotGiven::Value,
-    ) {
-        $this->to = $to;
-        $this->cc = $cc;
-        $this->bcc = $bcc;
-        $this->subject = $subject;
-        $this->html = $html;
-        $this->text = $text;
-        $this->attachments = $attachments;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->to !== SdkNotGiven::Value) {
-            $values["to"] = $this->to;
-        }
-        if ($this->cc !== SdkNotGiven::Value) {
-            $values["cc"] = $this->cc;
-        }
-        if ($this->bcc !== SdkNotGiven::Value) {
-            $values["bcc"] = $this->bcc;
-        }
-        if ($this->subject !== SdkNotGiven::Value) {
-            $values["subject"] = $this->subject;
-        }
-        if ($this->html !== SdkNotGiven::Value) {
-            $values["html"] = $this->html;
-        }
-        if ($this->text !== SdkNotGiven::Value) {
-            $values["text"] = $this->text;
-        }
-        if ($this->attachments !== SdkNotGiven::Value) {
-            $values["attachments"] = $this->attachments;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            to: (property_exists($data, "to") ? ($data->to === null ? null : (is_array($data->to) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkClient::stringValue($data->to))) : SdkNotGiven::Value),
-            cc: (property_exists($data, "cc") ? ($data->cc === null ? null : (is_array($data->cc) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkClient::stringValue($data->cc))) : SdkNotGiven::Value),
-            bcc: (property_exists($data, "bcc") ? ($data->bcc === null ? null : (is_array($data->bcc) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))) : SdkClient::stringValue($data->bcc))) : SdkNotGiven::Value),
-            subject: (property_exists($data, "subject") ? ($data->subject === null ? null : SdkClient::stringValue($data->subject)) : SdkNotGiven::Value),
-            html: (property_exists($data, "html") ? ($data->html === null ? null : SdkClient::stringValue($data->html)) : SdkNotGiven::Value),
-            text: (property_exists($data, "text") ? ($data->text === null ? null : SdkClient::stringValue($data->text)) : SdkNotGiven::Value),
-            attachments: (property_exists($data, "attachments") ? ($data->attachments === null ? null : array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, InboxDraftAttachmentInput::class), SdkClient::arrayValue($data->attachments)))) : SdkNotGiven::Value),
         );
     }
 }

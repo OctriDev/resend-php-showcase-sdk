@@ -38,6 +38,6 @@ class OauthNamespace
      */
     public function revokeGrant(string $oauthGrantId, ?RequestOptions $requestOptions = null): RevokeOAuthGrantResponse
     {
-        return Oauth::revokeGrant($this->clientConfig, $oauthGrantId, $requestOptions);
+        return Oauth::revokeOauthGrant($this->clientConfig, $oauthGrantId, $requestOptions);
     }
 }

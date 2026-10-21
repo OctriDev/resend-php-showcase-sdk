@@ -9,7 +9,9 @@ namespace octridev_resend;
 
 class Inboxes
 {
-    use InboxesMethodsPart1;
-    use InboxesMethodsPart2;
-    use InboxesMethodsPart3;
+    use InboxesMethods;
+    use InboxesAgentMethods;
+    use InboxesLabelsMethods;
+    use InboxesThreadsMethods;
+    use InboxesDraftsMethods;
 }

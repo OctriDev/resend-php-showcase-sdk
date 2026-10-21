@@ -9,5 +9,5 @@ namespace octridev_resend;
 
 class Contacts
 {
-    use ContactsMethodsPart1;
+    use ContactsMethods;
 }
