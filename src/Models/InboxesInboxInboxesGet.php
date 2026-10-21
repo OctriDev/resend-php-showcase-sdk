@@ -145,39 +145,17 @@ class Inbox implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "object") || $data->object === null) {
-            throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "email_address") || $data->email_address === null) {
-            throw new SdkValidationError("email_address", 'required', "Required property 'email_address' is missing or null");
-        }
-        if (!property_exists($data, "domain_id") || $data->domain_id === null) {
-            throw new SdkValidationError("domain_id", 'required', "Required property 'domain_id' is missing or null");
-        }
-        if (!property_exists($data, "receiving_address")) {
-            throw new SdkValidationError("receiving_address", 'required', "Missing required property 'receiving_address'");
-        }
-        if (!property_exists($data, "from_name")) {
-            throw new SdkValidationError("from_name", 'required', "Missing required property 'from_name'");
-        }
-        if (!property_exists($data, "unread") || $data->unread === null) {
-            throw new SdkValidationError("unread", 'required', "Required property 'unread' is missing or null");
-        }
-        if (!property_exists($data, "drafts") || $data->drafts === null) {
-            throw new SdkValidationError("drafts", 'required', "Required property 'drafts' is missing or null");
-        }
-        if (!property_exists($data, "last_received")) {
-            throw new SdkValidationError("last_received", 'required', "Missing required property 'last_received'");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
+        if (!property_exists($data, "object") || $data->object === null) { throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "email_address") || $data->email_address === null) { throw new SdkValidationError("email_address", 'required', "Required property 'email_address' is missing or null"); }
+        if (!property_exists($data, "domain_id") || $data->domain_id === null) { throw new SdkValidationError("domain_id", 'required', "Required property 'domain_id' is missing or null"); }
+        if (!property_exists($data, "receiving_address")) { throw new SdkValidationError("receiving_address", 'required', "Missing required property 'receiving_address'"); }
+        if (!property_exists($data, "from_name")) { throw new SdkValidationError("from_name", 'required', "Missing required property 'from_name'"); }
+        if (!property_exists($data, "unread") || $data->unread === null) { throw new SdkValidationError("unread", 'required', "Required property 'unread' is missing or null"); }
+        if (!property_exists($data, "drafts") || $data->drafts === null) { throw new SdkValidationError("drafts", 'required', "Required property 'drafts' is missing or null"); }
+        if (!property_exists($data, "last_received")) { throw new SdkValidationError("last_received", 'required', "Missing required property 'last_received'"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
         return new self(
             object_: SdkClient::stringValue($data->object),
             id: SdkClient::stringValue($data->id),

@@ -197,15 +197,9 @@ class SendEmailRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) {
-            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
-        }
-        if (!property_exists($data, "to") || $data->to === null) {
-            throw new SdkValidationError("to", 'required', "Required property 'to' is missing or null");
-        }
-        if (!property_exists($data, "subject") || $data->subject === null) {
-            throw new SdkValidationError("subject", 'required', "Required property 'subject' is missing or null");
-        }
+        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "to") || $data->to === null) { throw new SdkValidationError("to", 'required', "Required property 'to' is missing or null"); }
+        if (!property_exists($data, "subject") || $data->subject === null) { throw new SdkValidationError("subject", 'required', "Required property 'subject' is missing or null"); }
         return new self(
             from: SdkClient::stringValue($data->from),
             to: (is_array($data->to) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkClient::stringValue($data->to)),

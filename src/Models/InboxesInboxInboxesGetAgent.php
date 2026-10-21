@@ -17,26 +17,11 @@ final readonly class InboxAgentToneEnum implements SdkOpenEnum
     public const EXPANDED_PROFESSIONAL = "expanded_professional";
     public const EXPANDED_CASUAL = "expanded_casual";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -52,26 +37,11 @@ final readonly class InboxAgentEnabledActionsItemEnum implements SdkOpenEnum
     public const ARCHIVE_THREAD = "archive_thread";
     public const DELETE_THREAD = "delete_thread";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -142,18 +112,10 @@ class InboxAgent implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "object") || $data->object === null) {
-            throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null");
-        }
-        if (!property_exists($data, "instructions")) {
-            throw new SdkValidationError("instructions", 'required', "Missing required property 'instructions'");
-        }
-        if (!property_exists($data, "tone")) {
-            throw new SdkValidationError("tone", 'required', "Missing required property 'tone'");
-        }
-        if (!property_exists($data, "enabled_actions") || $data->enabled_actions === null) {
-            throw new SdkValidationError("enabled_actions", 'required', "Required property 'enabled_actions' is missing or null");
-        }
+        if (!property_exists($data, "object") || $data->object === null) { throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null"); }
+        if (!property_exists($data, "instructions")) { throw new SdkValidationError("instructions", 'required', "Missing required property 'instructions'"); }
+        if (!property_exists($data, "tone")) { throw new SdkValidationError("tone", 'required', "Missing required property 'tone'"); }
+        if (!property_exists($data, "enabled_actions") || $data->enabled_actions === null) { throw new SdkValidationError("enabled_actions", 'required', "Required property 'enabled_actions' is missing or null"); }
         return new self(
             object_: SdkClient::stringValue($data->object),
             instructions: ($data->instructions === null ? null : SdkClient::stringValue($data->instructions)),

@@ -45,9 +45,7 @@ class UpdateEventRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "schema")) {
-            throw new SdkValidationError("schema", 'required', "Missing required property 'schema'");
-        }
+        if (!property_exists($data, "schema")) { throw new SdkValidationError("schema", 'required', "Missing required property 'schema'"); }
         return new self(
             schema: ($data->schema === null ? null : SdkClient::stringMapValue($data->schema)),
         );

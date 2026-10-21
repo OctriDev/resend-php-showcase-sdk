@@ -185,51 +185,21 @@ class InboxThreadSearchResult implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "subject")) {
-            throw new SdkValidationError("subject", 'required', "Missing required property 'subject'");
-        }
-        if (!property_exists($data, "from")) {
-            throw new SdkValidationError("from", 'required', "Missing required property 'from'");
-        }
-        if (!property_exists($data, "to") || $data->to === null) {
-            throw new SdkValidationError("to", 'required', "Required property 'to' is missing or null");
-        }
-        if (!property_exists($data, "cc") || $data->cc === null) {
-            throw new SdkValidationError("cc", 'required', "Required property 'cc' is missing or null");
-        }
-        if (!property_exists($data, "bcc") || $data->bcc === null) {
-            throw new SdkValidationError("bcc", 'required', "Required property 'bcc' is missing or null");
-        }
-        if (!property_exists($data, "labels") || $data->labels === null) {
-            throw new SdkValidationError("labels", 'required', "Required property 'labels' is missing or null");
-        }
-        if (!property_exists($data, "email_count") || $data->email_count === null) {
-            throw new SdkValidationError("email_count", 'required', "Required property 'email_count' is missing or null");
-        }
-        if (!property_exists($data, "has_attachment") || $data->has_attachment === null) {
-            throw new SdkValidationError("has_attachment", 'required', "Required property 'has_attachment' is missing or null");
-        }
-        if (!property_exists($data, "has_draft") || $data->has_draft === null) {
-            throw new SdkValidationError("has_draft", 'required', "Required property 'has_draft' is missing or null");
-        }
-        if (!property_exists($data, "read") || $data->read === null) {
-            throw new SdkValidationError("read", 'required', "Required property 'read' is missing or null");
-        }
-        if (!property_exists($data, "received_at") || $data->received_at === null) {
-            throw new SdkValidationError("received_at", 'required', "Required property 'received_at' is missing or null");
-        }
-        if (!property_exists($data, "folder") || $data->folder === null) {
-            throw new SdkValidationError("folder", 'required', "Required property 'folder' is missing or null");
-        }
-        if (!property_exists($data, "matched_email_id")) {
-            throw new SdkValidationError("matched_email_id", 'required', "Missing required property 'matched_email_id'");
-        }
-        if (!property_exists($data, "highlights") || $data->highlights === null) {
-            throw new SdkValidationError("highlights", 'required', "Required property 'highlights' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "subject")) { throw new SdkValidationError("subject", 'required', "Missing required property 'subject'"); }
+        if (!property_exists($data, "from")) { throw new SdkValidationError("from", 'required', "Missing required property 'from'"); }
+        if (!property_exists($data, "to") || $data->to === null) { throw new SdkValidationError("to", 'required', "Required property 'to' is missing or null"); }
+        if (!property_exists($data, "cc") || $data->cc === null) { throw new SdkValidationError("cc", 'required', "Required property 'cc' is missing or null"); }
+        if (!property_exists($data, "bcc") || $data->bcc === null) { throw new SdkValidationError("bcc", 'required', "Required property 'bcc' is missing or null"); }
+        if (!property_exists($data, "labels") || $data->labels === null) { throw new SdkValidationError("labels", 'required', "Required property 'labels' is missing or null"); }
+        if (!property_exists($data, "email_count") || $data->email_count === null) { throw new SdkValidationError("email_count", 'required', "Required property 'email_count' is missing or null"); }
+        if (!property_exists($data, "has_attachment") || $data->has_attachment === null) { throw new SdkValidationError("has_attachment", 'required', "Required property 'has_attachment' is missing or null"); }
+        if (!property_exists($data, "has_draft") || $data->has_draft === null) { throw new SdkValidationError("has_draft", 'required', "Required property 'has_draft' is missing or null"); }
+        if (!property_exists($data, "read") || $data->read === null) { throw new SdkValidationError("read", 'required', "Required property 'read' is missing or null"); }
+        if (!property_exists($data, "received_at") || $data->received_at === null) { throw new SdkValidationError("received_at", 'required', "Required property 'received_at' is missing or null"); }
+        if (!property_exists($data, "folder") || $data->folder === null) { throw new SdkValidationError("folder", 'required', "Required property 'folder' is missing or null"); }
+        if (!property_exists($data, "matched_email_id")) { throw new SdkValidationError("matched_email_id", 'required', "Missing required property 'matched_email_id'"); }
+        if (!property_exists($data, "highlights") || $data->highlights === null) { throw new SdkValidationError("highlights", 'required', "Required property 'highlights' is missing or null"); }
         return new self(
             id: SdkClient::stringValue($data->id),
             subject: ($data->subject === null ? null : SdkClient::stringValue($data->subject)),

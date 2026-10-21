@@ -20,26 +20,11 @@ final readonly class WebhookEventBounceSubTypeEnum implements SdkOpenEnum
     public const CONTENTREJECTED = "ContentRejected";
     public const ATTACHMENTREJECTED = "AttachmentRejected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -51,26 +36,11 @@ final readonly class WebhookEventBounceTypeEnum implements SdkOpenEnum
     public const TRANSIENT = "Transient";
     public const PERMANENT = "Permanent";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -141,18 +111,10 @@ class WebhookEventBounce implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "diagnosticCode") || $data->diagnosticCode === null) {
-            throw new SdkValidationError("diagnosticCode", 'required', "Required property 'diagnosticCode' is missing or null");
-        }
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "subType") || $data->subType === null) {
-            throw new SdkValidationError("subType", 'required', "Required property 'subType' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "diagnosticCode") || $data->diagnosticCode === null) { throw new SdkValidationError("diagnosticCode", 'required', "Required property 'diagnosticCode' is missing or null"); }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "subType") || $data->subType === null) { throw new SdkValidationError("subType", 'required', "Required property 'subType' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             diagnosticCode: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->diagnosticCode))),
             message: SdkClient::stringValue($data->message),
