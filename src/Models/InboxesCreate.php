@@ -8,254 +8,67 @@ declare(strict_types=1);
 namespace octridev_resend;
 
 /**
- * At least one of `to`, `cc`, `bcc`, `subject`, `text`, `html` or `attachments` must be non-empty. The combined recipients of `to`, `cc` and `bcc` cannot exceed 50. `thread_id` and `reply_to_email_id` must be sent together or not at all.
+ * Typed representation of the `CreateInboxOptions` API schema.
  */
-class CreateInboxDraftOptions implements \JsonSerializable
+class CreateInboxOptions implements \JsonSerializable
 {
     /**
-     * The recipients. For multiple addresses, send an array of strings. Each value can include a friendly name, for example `Ada Lovelace <ada@example.org>`. Each address is `email@example.com` or `Name <email@example.com>`. An address that is not valid returns a 422.
-     *
-     * @var string|list<string>|null|SdkNotGiven
-     */
-    public readonly string|array|null|SdkNotGiven $to;
-    /**
-     * The CC recipients. For multiple addresses, send an array of strings. Each address is `email@example.com` or `Name <email@example.com>`. An address that is not valid returns a 422.
-     *
-     * @var string|list<string>|null|SdkNotGiven
-     */
-    public readonly string|array|null|SdkNotGiven $cc;
-    /**
-     * The BCC recipients. For multiple addresses, send an array of strings. Each address is `email@example.com` or `Name <email@example.com>`. An address that is not valid returns a 422.
-     *
-     * @var string|list<string>|null|SdkNotGiven
-     */
-    public readonly string|array|null|SdkNotGiven $bcc;
-    /**
-     * The subject. Max 2000 characters. A string that is only whitespace, or that contains a line break, is rejected.
-     *
-     * @var string|null|SdkNotGiven
-     */
-    public readonly string|null|SdkNotGiven $subject;
-    /**
-     * The HTML body.
-     *
-     * @var string|null|SdkNotGiven
-     */
-    public readonly string|null|SdkNotGiven $html;
-    /**
-     * The plain text body.
-     *
-     * @var string|null|SdkNotGiven
-     */
-    public readonly string|null|SdkNotGiven $text;
-    /**
-     * Files to store on the draft. Each one needs `content`, `filename` and `content_type`. A `path` without `content` returns a 422, and when both are sent, `path` is ignored. A `content_id` returns a 422. The files on a draft can total at most 25 MB. An empty file or a blocked file type returns a 422.
-     *
-     * @var list<InboxDraftAttachmentInput>|null|SdkNotGiven
-     */
-    public readonly array|null|SdkNotGiven $attachments;
-    /**
-     * The Thread ID to reply in. Must be sent with `reply_to_email_id`.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $threadId;
-    /**
-     * The Email ID to reply to, as returned in `data[].id` by the list thread emails endpoint. Must be sent with `thread_id`.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $replyToEmailId;
-
-    /**
-     * @param string|list<string>|null|SdkNotGiven $to
-     * @param string|list<string>|null|SdkNotGiven $cc
-     * @param string|list<string>|null|SdkNotGiven $bcc
-     * @param string|null|SdkNotGiven $subject
-     * @param string|null|SdkNotGiven $html
-     * @param string|null|SdkNotGiven $text
-     * @param list<InboxDraftAttachmentInput>|null|SdkNotGiven $attachments
-     * @param string|SdkNotGiven $threadId
-     * @param string|SdkNotGiven $replyToEmailId
-     */
-    public function __construct(
-        string|array|null|SdkNotGiven $to = SdkNotGiven::Value,
-        string|array|null|SdkNotGiven $cc = SdkNotGiven::Value,
-        string|array|null|SdkNotGiven $bcc = SdkNotGiven::Value,
-        string|null|SdkNotGiven $subject = SdkNotGiven::Value,
-        string|null|SdkNotGiven $html = SdkNotGiven::Value,
-        string|null|SdkNotGiven $text = SdkNotGiven::Value,
-        array|null|SdkNotGiven $attachments = SdkNotGiven::Value,
-        string|SdkNotGiven $threadId = SdkNotGiven::Value,
-        string|SdkNotGiven $replyToEmailId = SdkNotGiven::Value,
-    ) {
-        $this->to = $to;
-        $this->cc = $cc;
-        $this->bcc = $bcc;
-        $this->subject = $subject;
-        $this->html = $html;
-        $this->text = $text;
-        $this->attachments = $attachments;
-        $this->threadId = $threadId;
-        $this->replyToEmailId = $replyToEmailId;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->to !== SdkNotGiven::Value) {
-            $values["to"] = $this->to;
-        }
-        if ($this->cc !== SdkNotGiven::Value) {
-            $values["cc"] = $this->cc;
-        }
-        if ($this->bcc !== SdkNotGiven::Value) {
-            $values["bcc"] = $this->bcc;
-        }
-        if ($this->subject !== SdkNotGiven::Value) {
-            $values["subject"] = $this->subject;
-        }
-        if ($this->html !== SdkNotGiven::Value) {
-            $values["html"] = $this->html;
-        }
-        if ($this->text !== SdkNotGiven::Value) {
-            $values["text"] = $this->text;
-        }
-        if ($this->attachments !== SdkNotGiven::Value) {
-            $values["attachments"] = $this->attachments;
-        }
-        if ($this->threadId !== SdkNotGiven::Value) {
-            $values["thread_id"] = $this->threadId;
-        }
-        if ($this->replyToEmailId !== SdkNotGiven::Value) {
-            $values["reply_to_email_id"] = $this->replyToEmailId;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            to: (property_exists($data, "to") ? ($data->to === null ? null : (is_array($data->to) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->to))) : SdkClient::stringValue($data->to))) : SdkNotGiven::Value),
-            cc: (property_exists($data, "cc") ? ($data->cc === null ? null : (is_array($data->cc) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->cc))) : SdkClient::stringValue($data->cc))) : SdkNotGiven::Value),
-            bcc: (property_exists($data, "bcc") ? ($data->bcc === null ? null : (is_array($data->bcc) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bcc))) : SdkClient::stringValue($data->bcc))) : SdkNotGiven::Value),
-            subject: (property_exists($data, "subject") ? ($data->subject === null ? null : SdkClient::stringValue($data->subject)) : SdkNotGiven::Value),
-            html: (property_exists($data, "html") ? ($data->html === null ? null : SdkClient::stringValue($data->html)) : SdkNotGiven::Value),
-            text: (property_exists($data, "text") ? ($data->text === null ? null : SdkClient::stringValue($data->text)) : SdkNotGiven::Value),
-            attachments: (property_exists($data, "attachments") ? ($data->attachments === null ? null : array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, InboxDraftAttachmentInput::class), SdkClient::arrayValue($data->attachments)))) : SdkNotGiven::Value),
-            threadId: (property_exists($data, "thread_id") && $data->thread_id !== null ? SdkClient::stringValue($data->thread_id) : SdkNotGiven::Value),
-            replyToEmailId: (property_exists($data, "reply_to_email_id") && $data->reply_to_email_id !== null ? SdkClient::stringValue($data->reply_to_email_id) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Typed representation of the `CreateInboxDraftResponseSuccess` API schema.
- */
-class CreateInboxDraftResponseSuccess implements \JsonSerializable
-{
-    /**
-     * Type of the response object.
+     * The inbox email address on one of your domains. The API trims and lowercases it. The part before the `@` is at most 64 characters and contains only letters, numbers, and `. _ % + -`. It cannot start or end with a dot or contain two dots in a row.
      *
      * @var string
      */
-    public readonly string $object_;
+    public readonly string $emailAddress;
     /**
-     * The ID of the draft.
-     *
-     * @var string
-     */
-    public readonly string $id;
-
-    /**
-     * @param string $object_
-     * @param string $id
-     */
-    public function __construct(
-        string $object_,
-        string $id,
-    ) {
-        $this->object_ = $object_;
-        $this->id = $id;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "object" => $this->object_,
-            "id" => $this->id,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "object") || $data->object === null) {
-            throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        return new self(
-            object_: SdkClient::stringValue($data->object),
-            id: SdkClient::stringValue($data->id),
-        );
-    }
-}
-
-/**
- * Typed representation of the `CreateInboxLabelOptions` API schema.
- */
-class CreateInboxLabelOptions implements \JsonSerializable
-{
-    /**
-     * The name of the label. Max 64 characters. Leading and trailing whitespace is trimmed. Must not match another label on the inbox, compared without case.
-     *
-     * @var string
-     */
-    public readonly string $name;
-    /**
-     * The color of the label, as a `#RRGGBB` hex color. It is stored in uppercase. When omitted, a random color from the dashboard palette is used.
+     * Internal name for the inbox. Recipients do not see it. Max 64 characters. Defaults to `email_address`.
      *
      * @var string|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $color;
+    public readonly string|SdkNotGiven $name;
+    /**
+     * The name recipients see when mail is sent from this inbox. A plain name, not a `Name <email>` address. Max 78 characters. It cannot contain a colon, `<`, `>`, line breaks, or other control characters. An email address inside the name must be on a domain the team has verified for sending. An empty string leaves it unset.
+     *
+     * @var string|SdkNotGiven
+     */
+    public readonly string|SdkNotGiven $fromName;
+    /**
+     * When `true`, Resend provisions a receiving address so you can receive mail without adding an MX record. The address is returned in `receiving_address`.
+     *
+     * @var bool|SdkNotGiven
+     */
+    public readonly bool|SdkNotGiven $forwarding;
 
     /**
-     * @param string $name
-     * @param string|SdkNotGiven $color
+     * @param string $emailAddress
+     * @param string|SdkNotGiven $name
+     * @param string|SdkNotGiven $fromName
+     * @param bool|SdkNotGiven $forwarding
      */
     public function __construct(
-        string $name,
-        string|SdkNotGiven $color = SdkNotGiven::Value,
+        string $emailAddress,
+        string|SdkNotGiven $name = SdkNotGiven::Value,
+        string|SdkNotGiven $fromName = SdkNotGiven::Value,
+        bool|SdkNotGiven $forwarding = SdkNotGiven::Value,
     ) {
+        $this->emailAddress = $emailAddress;
         $this->name = $name;
-        $this->color = $color;
+        $this->fromName = $fromName;
+        $this->forwarding = $forwarding;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "name" => $this->name,
+            "email_address" => $this->emailAddress,
         ];
-        if ($this->color !== SdkNotGiven::Value) {
-            $values["color"] = $this->color;
+        if ($this->name !== SdkNotGiven::Value) {
+            $values["name"] = $this->name;
+        }
+        if ($this->fromName !== SdkNotGiven::Value) {
+            $values["from_name"] = $this->fromName;
+        }
+        if ($this->forwarding !== SdkNotGiven::Value) {
+            $values["forwarding"] = $this->forwarding;
         }
         return $values;
     }
@@ -268,20 +81,22 @@ class CreateInboxLabelOptions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        if (!property_exists($data, "email_address") || $data->email_address === null) {
+            throw new SdkValidationError("email_address", 'required', "Required property 'email_address' is missing or null");
         }
         return new self(
-            name: SdkClient::stringValue($data->name),
-            color: (property_exists($data, "color") && $data->color !== null ? SdkClient::stringValue($data->color) : SdkNotGiven::Value),
+            emailAddress: SdkClient::stringValue($data->email_address),
+            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
+            fromName: (property_exists($data, "from_name") && $data->from_name !== null ? SdkClient::stringValue($data->from_name) : SdkNotGiven::Value),
+            forwarding: (property_exists($data, "forwarding") && $data->forwarding !== null ? SdkClient::boolValue($data->forwarding) : SdkNotGiven::Value),
         );
     }
 }
 
 /**
- * Typed representation of the `CreateInboxLabelResponseSuccess` API schema.
+ * Typed representation of the `CreateInboxResponseSuccess` API schema.
  */
-class CreateInboxLabelResponseSuccess implements \JsonSerializable
+class CreateInboxResponseSuccess implements \JsonSerializable
 {
     /**
      * Type of the response object.
@@ -290,7 +105,7 @@ class CreateInboxLabelResponseSuccess implements \JsonSerializable
      */
     public readonly string $object_;
     /**
-     * The ID of the label.
+     * The ID of the inbox.
      *
      * @var string
      */

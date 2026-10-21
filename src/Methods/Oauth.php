@@ -39,10 +39,10 @@ class Oauth
      * @param string $oauthGrantId
      * @return RevokeOAuthGrantResponse
      */
-    public static function revokeGrant(ClientConfig $clientConfig, string $oauthGrantId, ?RequestOptions $requestOptions = null): RevokeOAuthGrantResponse
+    public static function revokeOauthGrant(ClientConfig $clientConfig, string $oauthGrantId, ?RequestOptions $requestOptions = null): RevokeOAuthGrantResponse
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/oauth/grants/" . SdkClient::encodePathSegment($oauthGrantId) . "", $clientConfig, returnType: RevokeOAuthGrantResponse::class, decoder: 'json', operationId: 'revokeGrant', requestOptions: $requestOptions);
+        $sdkResponse = SdkClient::request('DELETE', "/oauth/grants/" . SdkClient::encodePathSegment($oauthGrantId) . "", $clientConfig, returnType: RevokeOAuthGrantResponse::class, decoder: 'json', operationId: 'revokeOauthGrant', requestOptions: $requestOptions);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RevokeOAuthGrantResponse::class));
     }
 }
