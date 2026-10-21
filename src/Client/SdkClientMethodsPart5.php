@@ -260,7 +260,8 @@ trait SdkClientMethodsPart5
     {
         if (in_array($method, self::IDEMPOTENT_METHODS, true)) {
             return true;
-        }return $idempotencyKey !== null && in_array($operationId, self::IDEMPOTENCY_KEY_OPERATIONS, true);}
+        }return $idempotencyKey !== null && in_array($operationId, self::IDEMPOTENCY_KEY_OPERATIONS, true);
+    }
 
     /** @param list<int> $retryOn */
     private static function shouldRetry(string $method, int $status, array $retryOn): bool

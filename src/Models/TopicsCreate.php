@@ -15,11 +15,26 @@ final readonly class CreateTopicOptionsDefaultSubscriptionEnum implements SdkOpe
     public const OPT_IN = "opt_in";
     public const OPT_OUT = "opt_out";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -30,11 +45,26 @@ final readonly class CreateTopicOptionsVisibilityEnum implements SdkOpenEnum
     public const PUBLIC = "public";
     public const PRIVATE = "private";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -109,8 +139,12 @@ class CreateTopicOptions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "default_subscription") || $data->default_subscription === null) { throw new SdkValidationError("default_subscription", 'required', "Required property 'default_subscription' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "default_subscription") || $data->default_subscription === null) {
+            throw new SdkValidationError("default_subscription", 'required', "Required property 'default_subscription' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             defaultSubscription: SdkClient::hydrateStringEnumOrString($data->default_subscription, CreateTopicOptionsDefaultSubscriptionEnum::class),

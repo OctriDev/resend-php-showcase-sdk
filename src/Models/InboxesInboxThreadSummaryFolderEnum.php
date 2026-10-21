@@ -18,11 +18,26 @@ final readonly class InboxThreadSummaryFolderEnum implements SdkOpenEnum
     public const SENT = "sent";
     public const TRASH = "trash";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -113,12 +128,24 @@ class InboxThreadSummary implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "object") || $data->object === null) { throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "subject")) { throw new SdkValidationError("subject", 'required', "Missing required property 'subject'"); }
-        if (!property_exists($data, "folder") || $data->folder === null) { throw new SdkValidationError("folder", 'required', "Required property 'folder' is missing or null"); }
-        if (!property_exists($data, "labels") || $data->labels === null) { throw new SdkValidationError("labels", 'required', "Required property 'labels' is missing or null"); }
-        if (!property_exists($data, "read") || $data->read === null) { throw new SdkValidationError("read", 'required', "Required property 'read' is missing or null"); }
+        if (!property_exists($data, "object") || $data->object === null) {
+            throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "subject")) {
+            throw new SdkValidationError("subject", 'required', "Missing required property 'subject'");
+        }
+        if (!property_exists($data, "folder") || $data->folder === null) {
+            throw new SdkValidationError("folder", 'required', "Required property 'folder' is missing or null");
+        }
+        if (!property_exists($data, "labels") || $data->labels === null) {
+            throw new SdkValidationError("labels", 'required', "Required property 'labels' is missing or null");
+        }
+        if (!property_exists($data, "read") || $data->read === null) {
+            throw new SdkValidationError("read", 'required', "Required property 'read' is missing or null");
+        }
         return new self(
             object_: SdkClient::stringValue($data->object),
             id: SdkClient::stringValue($data->id),
